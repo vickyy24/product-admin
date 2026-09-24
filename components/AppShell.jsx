@@ -177,7 +177,7 @@ export default function AppShell({ children }) {
 
             <div className={isSidebarOpen ? 'lg:pl-64' : 'lg:pl-20'}>
                 <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/95 backdrop-blur">
-                    <div className="mx-auto flex h-[72px] w-[92%] max-w-7xl items-center gap-4">
+                    <div className="mx-auto flex h-16 w-[92%] max-w-7xl items-center gap-4">
                         {!isSidebarOpen ? (
                             <button
                                 className="rounded-lg border border-slate-200 bg-white p-2 text-slate-500 shadow-sm transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 lg:hidden"
