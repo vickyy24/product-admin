@@ -174,7 +174,7 @@ function ProductsView() {
                         <div className="flex items-center justify-between gap-3 lg:contents">
                             <h2 className="shrink-0 text-lg font-bold text-slate-900">Product catalogue</h2>
                             <Link
-                                className="inline-flex shrink-0 items-center justify-center gap-1.5 rounded-xl bg-brand px-3 py-2 text-xs font-semibold text-white shadow-[0_8px_18px_rgba(15,118,110,0.28)] transition hover:bg-[#0b5d57] lg:hidden"
+                                className="add-product-action inline-flex shrink-0 lg:hidden"
                                 href="/products/new"
                             >
                                 <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
@@ -204,7 +204,7 @@ function ProductsView() {
                             />
                         </div>
                         <select
-                            className="h-10 rounded-lg border border-slate-200 bg-slate-50 px-3 text-sm outline-none transition focus:border-brand focus:bg-white focus:ring-2 focus:ring-teal-100"
+                            className="product-filter-control"
                             value={selectedCategory}
                             onChange={handleCategoryChange}
                         >
@@ -216,7 +216,7 @@ function ProductsView() {
                             ))}
                         </select>
                         <select
-                            className="h-10 rounded-lg border border-slate-200 bg-slate-50 px-3 text-sm outline-none transition focus:border-brand focus:bg-white focus:ring-2 focus:ring-teal-100"
+                            className="product-filter-control"
                             value={selectedSort}
                             onChange={handleSortChange}
                         >
@@ -226,7 +226,7 @@ function ProductsView() {
                             <option value="title">Title</option>
                         </select>
                         <Link
-                            className="hidden items-center justify-center gap-1.5 rounded-xl bg-brand px-3 py-2 text-xs font-semibold text-white shadow-[0_8px_18px_rgba(15,118,110,0.28)] transition hover:bg-[#0b5d57] lg:inline-flex"
+                            className="add-product-action hidden lg:inline-flex"
                             href="/products/new"
                         >
                             <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
