@@ -68,7 +68,7 @@ export default function AppShell({ children }) {
             <aside
                 className={`fixed inset-y-0 left-0 z-30 overflow-hidden border-r border-slate-200 bg-white transition-[width,transform] duration-200 ${
                     isSidebarOpen
-                        ? 'w-64 translate-x-0'
+                        ? 'w-56 translate-x-0 lg:w-64'
                         : 'w-20 -translate-x-full lg:translate-x-0'
                 }`}
             >
@@ -208,18 +208,6 @@ export default function AppShell({ children }) {
                                 )}
                             </svg>
                         </button>
-                        {isSidebarOpen ? (
-                            <Link
-                                className="absolute left-12 inline-flex items-center lg:hidden"
-                                href="/products"
-                            >
-                                <BrandLogo />
-                            </Link>
-                        ) : (
-                            <p className="absolute left-12 truncate text-sm font-semibold text-slate-700 lg:hidden">
-                                Manage your product catalog.
-                            </p>
-                        )}
                     </div>
                 </header>
                 {children}
