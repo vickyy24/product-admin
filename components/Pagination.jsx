@@ -34,7 +34,7 @@ export default function Pagination({
             </div>
             <div className="flex max-w-full flex-wrap items-center gap-1 sm:justify-end">
                 <button
-                    className="shrink-0 rounded-lg border bg-white px-3 py-2 text-sm font-semibold text-slate-600 disabled:cursor-not-allowed disabled:opacity-50"
+                    className="shrink-0 rounded-lg border bg-white px-3 py-2 text-sm font-semibold text-slate-600 shadow-sm transition duration-200 hover:border-brand hover:bg-teal-50 hover:text-brand hover:shadow-md focus:outline-none focus:ring-2 focus:ring-teal-100 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-slate-200 disabled:hover:bg-white disabled:hover:text-slate-600 disabled:hover:shadow-sm"
                     disabled={page === 1}
                     onClick={() => onPageChange(page - 1)}
                     type="button"
@@ -45,8 +45,8 @@ export default function Pagination({
                     <button
                         className={`rounded-lg px-3 py-2 text-sm font-semibold ${
                             pageNumber === page
-                                ? 'shrink-0 bg-brand text-white'
-                                : 'shrink-0 border bg-white text-slate-600'
+                                ? 'shrink-0 bg-brand text-white shadow-sm'
+                                : 'shrink-0 border bg-white text-slate-600 shadow-sm transition duration-200 hover:border-brand hover:bg-teal-50 hover:text-brand hover:shadow-md focus:outline-none focus:ring-2 focus:ring-teal-100 active:scale-95'
                         }`}
                         key={pageNumber}
                         onClick={() => onPageChange(pageNumber)}
@@ -56,7 +56,7 @@ export default function Pagination({
                     </button>
                 ))}
                 <button
-                    className="shrink-0 rounded-lg border bg-white px-3 py-2 text-sm font-semibold text-slate-600 disabled:cursor-not-allowed disabled:opacity-50"
+                    className="shrink-0 rounded-lg border bg-white px-3 py-2 text-sm font-semibold text-slate-600 shadow-sm transition duration-200 hover:border-brand hover:bg-teal-50 hover:text-brand hover:shadow-md focus:outline-none focus:ring-2 focus:ring-teal-100 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:border-slate-200 disabled:hover:bg-white disabled:hover:text-slate-600 disabled:hover:shadow-sm"
                     disabled={page === totalPages}
                     onClick={() => onPageChange(page + 1)}
                     type="button"
