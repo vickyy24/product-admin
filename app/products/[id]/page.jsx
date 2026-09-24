@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useParams, useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import DashboardLayout from '../../../components/DashboardLayout';
 import ConfirmDialog from '../../../components/ConfirmDialog';
 import Loader from '../../../components/Loader';
@@ -19,6 +19,19 @@ export default function ProductDetailsPage() {
     const [isDeleting, setIsDeleting] = useState(false);
     const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
     const [isAuthReady, setIsAuthReady] = useState(false);
+
+    const loadProduct = useCallback(() => {
+        setProduct(null);
+        setErrorMessage('');
+
+        getProduct(id).catch((error) => {
+            setErrorMessage(error.message);
+        }).then((result) => {
+            if (result) {
+                setProduct(result);
+            }
+        });
+    }, [id]);
 
     function handleDelete() {
         if (isDeleting) {
@@ -50,10 +63,8 @@ export default function ProductDetailsPage() {
 
         setIsAuthReady(true);
 
-        getProduct(id)
-            .then((result) => setProduct(result))
-            .catch((error) => setErrorMessage(error.message));
-    }, [id, router]);
+        loadProduct();
+    }, [loadProduct, router]);
 
     if (!isAuthReady || !isAuthenticated()) {
         return null;
@@ -64,15 +75,24 @@ export default function ProductDetailsPage() {
             <DashboardLayout>
                 <main className="mx-auto w-[96%] max-w-[1600px] py-4 lg:w-full lg:max-w-none lg:px-3 lg:py-3">
                     <StatusMessage
-                        title="Product not found"
+                        title="Unable to load product"
                         description={errorMessage}
                         action={
-                            <Link
-                                className="inline-flex rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-white"
-                                href="/products"
-                            >
-                                Back to products
-                            </Link>
+                    <div className="flex justify-center gap-3">
+                        <button
+                            className="rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-white"
+                            onClick={loadProduct}
+                            type="button"
+                        >
+                            Retry
+                        </button>
+                        <Link
+                            className="inline-flex rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-600"
+                            href="/products"
+                        >
+                            Back to products
+                        </Link>
+                    </div>
                         }
                     />
                 </main>
