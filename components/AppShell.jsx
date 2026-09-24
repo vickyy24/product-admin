@@ -211,7 +211,7 @@ export default function AppShell({ children }) {
                         <p className="absolute left-12 truncate text-sm font-semibold text-slate-700 lg:hidden">
                             Manage your product catalog.
                         </p>
-                        <p className="hidden truncate text-base font-semibold leading-tight text-slate-700 lg:ml-auto lg:block lg:text-lg">
+                        <p className="hidden truncate text-base font-semibold leading-tight text-slate-700 lg:block lg:text-lg">
                             Manage your product catalog.
                         </p>
                     </div>
