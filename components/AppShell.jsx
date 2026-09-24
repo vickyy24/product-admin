@@ -182,34 +182,38 @@ export default function AppShell({ children }) {
                     }`}
                 >
                     <div className="relative mx-auto flex h-16 w-[92%] max-w-7xl items-center">
-                        {!isSidebarOpen ? (
-                            <button
-                                className="absolute left-0 rounded-lg border border-slate-200 bg-white p-2 text-slate-500 shadow-sm transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 lg:hidden"
-                                onClick={() => setIsSidebarOpen(true)}
-                                type="button"
-                                aria-label="Open sidebar"
-                                aria-expanded={isSidebarOpen}
+                        <button
+                            className="absolute left-0 rounded-lg border border-slate-200 bg-white p-2 text-slate-500 shadow-sm transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 lg:hidden"
+                            onClick={() => setIsSidebarOpen((current) => !current)}
+                            type="button"
+                            aria-label={isSidebarOpen ? 'Close sidebar' : 'Open sidebar'}
+                            aria-expanded={isSidebarOpen}
+                        >
+                            <svg
+                                className="h-5 w-5"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                aria-hidden="true"
                             >
-                                <svg
-                                    className="h-5 w-5"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    aria-hidden="true"
-                                >
-                                    <path d="M4 6h16M4 12h16M4 18h16" />
-                                </svg>
-                            </button>
-                        ) : null}
-                        {!isSidebarOpen ? (
-                            <Link
-                                className="absolute left-12 inline-flex items-center lg:hidden"
-                                href="/products"
-                            >
-                                <BrandLogo compact />
-                            </Link>
-                        ) : null}
+                                {isSidebarOpen ? (
+                                    <>
+                                        <path d="M6 6l12 12M18 6L6 18" />
+                                    </>
+                                ) : (
+                                    <>
+                                        <path d="M4 6h16M4 12h16M4 18h16" />
+                                    </>
+                                )}
+                            </svg>
+                        </button>
+                        <Link
+                            className="absolute left-12 inline-flex items-center lg:hidden"
+                            href="/products"
+                        >
+                            <BrandLogo compact />
+                        </Link>
                     </div>
                 </header>
                 {children}
