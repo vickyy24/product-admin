@@ -33,6 +33,8 @@ export default function LoginPage() {
 
         if (!credentials.username.trim()) {
             errors.username = 'Username is required.';
+        } else if (!/^[A-Za-z0-9._-]{3,30}$/.test(credentials.username.trim())) {
+            errors.username = 'Username must be 3-30 letters, numbers, dots, underscores, or hyphens.';
         }
 
         if (!credentials.password) {
@@ -98,7 +100,7 @@ export default function LoginPage() {
                     </div>
                 ) : null}
 
-                <form className="space-y-5" onSubmit={handleSubmit}>
+                <form className="space-y-5" noValidate onSubmit={handleSubmit}>
                     <label
                         className="block text-sm font-semibold text-slate-700"
                         htmlFor="username"
@@ -111,7 +113,7 @@ export default function LoginPage() {
                             value={credentials.username}
                             onChange={handleInputChange}
                             autoComplete="username"
-                            required
+                            aria-invalid={Boolean(fieldErrors.username)}
                         />
                         {fieldErrors.username ? (
                             <span className="mt-1 text-xs font-normal text-red-600">
@@ -133,7 +135,7 @@ export default function LoginPage() {
                             value={credentials.password}
                             onChange={handleInputChange}
                             autoComplete="current-password"
-                            required
+                            aria-invalid={Boolean(fieldErrors.password)}
                         />
                         {fieldErrors.password ? (
                             <span className="mt-1 text-xs font-normal text-red-600">

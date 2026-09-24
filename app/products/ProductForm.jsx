@@ -23,6 +23,7 @@ export default function ProductForm() {
     const productId = params.id;
     const [form, setForm] = useState(emptyForm);
     const [errorMessage, setErrorMessage] = useState('');
+    const [fieldErrors, setFieldErrors] = useState({});
     const [isSaving, setIsSaving] = useState(false);
     const [isAuthReady, setIsAuthReady] = useState(false);
 
@@ -34,12 +35,18 @@ export default function ProductForm() {
         }
 
         if (!file.type.startsWith('image/')) {
-            setErrorMessage('Please select a valid image file.');
+            setFieldErrors((currentErrors) => ({
+                ...currentErrors,
+                image: 'Please select a valid image file.',
+            }));
             return;
         }
 
         if (file.size > 2 * 1024 * 1024) {
-            setErrorMessage('Image size must be 2 MB or smaller.');
+            setFieldErrors((currentErrors) => ({
+                ...currentErrors,
+                image: 'Image size must be 2 MB or smaller.',
+            }));
             return;
         }
 
@@ -48,6 +55,10 @@ export default function ProductForm() {
             setForm((currentForm) => ({
                 ...currentForm,
                 image: reader.result,
+            }));
+            setFieldErrors((currentErrors) => ({
+                ...currentErrors,
+                image: '',
             }));
             setErrorMessage('');
         };
@@ -61,18 +72,42 @@ export default function ProductForm() {
             ...currentForm,
             [name]: value,
         }));
+        setFieldErrors((currentErrors) => ({
+            ...currentErrors,
+            [name]: '',
+        }));
+        setErrorMessage('');
     }
 
     function validateForm() {
-        if (!form.title.trim()) {
-            return 'Product title is required.';
+        const errors = {};
+        const title = form.title.trim();
+        const category = form.category.trim();
+        const description = form.description.trim();
+
+        if (!title) {
+            errors.title = 'Title is required.';
+        } else if (!/^[A-Za-z0-9][A-Za-z0-9 .,'&()\-]{1,99}$/.test(title)) {
+            errors.title = 'Title must be 2-100 characters and use standard text characters.';
         }
 
-        if (Number(form.price) < 0 || Number(form.stock) < 0) {
-            return 'Price and stock must be non-negative.';
+        if (category && !/^[A-Za-z0-9][A-Za-z0-9 &()\-]{1,49}$/.test(category)) {
+            errors.category = 'Category must be 2-50 characters.';
         }
 
-        return '';
+        if (!/^\d+(\.\d{1,2})?$/.test(String(form.price).trim())) {
+            errors.price = 'Enter a valid non-negative price with up to 2 decimals.';
+        }
+
+        if (!/^\d+$/.test(String(form.stock).trim())) {
+            errors.stock = 'Enter a valid non-negative whole number for stock.';
+        }
+
+        if (description.length > 1000) {
+            errors.description = 'Description must be 1000 characters or fewer.';
+        }
+
+        return errors;
     }
 
     async function handleSubmit(event) {
@@ -82,14 +117,16 @@ export default function ProductForm() {
             return;
         }
 
-        const validationMessage = validateForm();
-        if (validationMessage) {
-            setErrorMessage(validationMessage);
+        const validationErrors = validateForm();
+        if (Object.keys(validationErrors).length > 0) {
+            setFieldErrors(validationErrors);
+            setErrorMessage('Please correct the highlighted fields.');
             return;
         }
 
         setIsSaving(true);
         setErrorMessage('');
+        setFieldErrors({});
 
         try {
             const { image, ...productFields } = form;
@@ -178,6 +215,7 @@ export default function ProductForm() {
 
             <form
                 className="rounded-2xl border bg-white p-6 shadow-sm md:p-8"
+                noValidate
                 onSubmit={handleSubmit}
             >
                 {errorMessage ? (
@@ -195,8 +233,9 @@ export default function ProductForm() {
                             name="title"
                             value={form.title}
                             onChange={handleInputChange}
-                            required
+                            aria-invalid={Boolean(fieldErrors.title)}
                         />
+                        {fieldErrors.title ? <span className="mt-1 block text-xs font-normal text-red-600">{fieldErrors.title}</span> : null}
                     </label>
 
                     <label className="text-sm font-semibold text-slate-700" htmlFor="category">
@@ -207,7 +246,9 @@ export default function ProductForm() {
                             name="category"
                             value={form.category}
                             onChange={handleInputChange}
+                            aria-invalid={Boolean(fieldErrors.category)}
                         />
+                        {fieldErrors.category ? <span className="mt-1 block text-xs font-normal text-red-600">{fieldErrors.category}</span> : null}
                     </label>
 
                     <label className="text-sm font-semibold text-slate-700" htmlFor="price">
@@ -221,8 +262,9 @@ export default function ProductForm() {
                             step="0.01"
                             value={form.price}
                             onChange={handleInputChange}
-                            required
+                            aria-invalid={Boolean(fieldErrors.price)}
                         />
+                        {fieldErrors.price ? <span className="mt-1 block text-xs font-normal text-red-600">{fieldErrors.price}</span> : null}
                     </label>
 
                     <label className="text-sm font-semibold text-slate-700" htmlFor="stock">
@@ -235,8 +277,9 @@ export default function ProductForm() {
                             min="0"
                             value={form.stock}
                             onChange={handleInputChange}
-                            required
+                            aria-invalid={Boolean(fieldErrors.stock)}
                         />
+                        {fieldErrors.stock ? <span className="mt-1 block text-xs font-normal text-red-600">{fieldErrors.stock}</span> : null}
                     </label>
 
                     <label
@@ -250,7 +293,9 @@ export default function ProductForm() {
                             name="description"
                             value={form.description}
                             onChange={handleInputChange}
+                            aria-invalid={Boolean(fieldErrors.description)}
                         />
+                        {fieldErrors.description ? <span className="mt-1 block text-xs font-normal text-red-600">{fieldErrors.description}</span> : null}
                     </label>
 
                     <label
@@ -264,7 +309,9 @@ export default function ProductForm() {
                             type="file"
                             accept="image/*"
                             onChange={handleImageChange}
+                            aria-invalid={Boolean(fieldErrors.image)}
                         />
+                        {fieldErrors.image ? <span className="mt-1 block text-xs font-normal text-red-600">{fieldErrors.image}</span> : null}
                         <span className="mt-1 text-xs font-normal text-slate-500">
                             Upload an image file up to 2 MB.
                         </span>
