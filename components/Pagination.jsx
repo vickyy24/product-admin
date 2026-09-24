@@ -32,9 +32,9 @@ export default function Pagination({
                     </select>
                 </label>
             </div>
-            <div className="flex items-center gap-1">
+            <div className="flex max-w-full flex-wrap items-center gap-1 sm:justify-end">
                 <button
-                    className="rounded-lg border bg-white px-3 py-2 text-sm font-semibold text-slate-600 disabled:cursor-not-allowed disabled:opacity-50"
+                    className="shrink-0 rounded-lg border bg-white px-3 py-2 text-sm font-semibold text-slate-600 disabled:cursor-not-allowed disabled:opacity-50"
                     disabled={page === 1}
                     onClick={() => onPageChange(page - 1)}
                     type="button"
@@ -45,8 +45,8 @@ export default function Pagination({
                     <button
                         className={`rounded-lg px-3 py-2 text-sm font-semibold ${
                             pageNumber === page
-                                ? 'bg-brand text-white'
-                                : 'border bg-white text-slate-600'
+                                ? 'shrink-0 bg-brand text-white'
+                                : 'shrink-0 border bg-white text-slate-600'
                         }`}
                         key={pageNumber}
                         onClick={() => onPageChange(pageNumber)}
@@ -56,7 +56,7 @@ export default function Pagination({
                     </button>
                 ))}
                 <button
-                    className="rounded-lg border bg-white px-3 py-2 text-sm font-semibold text-slate-600 disabled:cursor-not-allowed disabled:opacity-50"
+                    className="shrink-0 rounded-lg border bg-white px-3 py-2 text-sm font-semibold text-slate-600 disabled:cursor-not-allowed disabled:opacity-50"
                     disabled={page === totalPages}
                     onClick={() => onPageChange(page + 1)}
                     type="button"
