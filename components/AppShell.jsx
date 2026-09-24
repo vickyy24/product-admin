@@ -181,7 +181,7 @@ export default function AppShell({ children }) {
                         isSidebarOpen ? 'lg:left-64' : 'lg:left-20'
                     }`}
                 >
-                    <div className="mx-auto flex h-16 w-[92%] max-w-7xl items-center justify-end gap-3">
+                    <div className="mx-auto flex h-16 w-[92%] max-w-7xl items-center gap-3">
                         {!isSidebarOpen ? (
                             <button
                                 className="rounded-lg border border-slate-200 bg-white p-2 text-slate-500 shadow-sm transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 lg:hidden"
@@ -210,8 +210,11 @@ export default function AppShell({ children }) {
                                 <BrandLogo compact />
                             </Link>
                         ) : null}
-                        <div className="min-w-0">
-                            <p className="hidden truncate text-base font-semibold leading-tight text-slate-700 sm:block sm:text-lg">
+                        <div className="min-w-0 lg:ml-auto">
+                            <p className="truncate text-sm font-semibold leading-tight text-slate-700 sm:text-lg">
+                                Products
+                            </p>
+                            <p className="truncate text-[10px] leading-tight text-slate-400 sm:text-sm">
                                 Manage your product catalog.
                             </p>
                         </div>
