@@ -79,7 +79,9 @@ export default function AppShell({ children }) {
                         }`}
                     >
                         <Link
-                            className="inline-flex items-center"
+                            className={`inline-flex items-center ${
+                                isSidebarOpen ? '' : 'lg:hidden'
+                            }`}
                             href="/products"
                         >
                             <BrandLogo />
@@ -207,6 +209,9 @@ export default function AppShell({ children }) {
                             </svg>
                         </button>
                         <p className="absolute left-12 truncate text-sm font-semibold text-slate-700 lg:hidden">
+                            Manage your product catalog.
+                        </p>
+                        <p className="hidden truncate text-base font-semibold leading-tight text-slate-700 lg:ml-auto lg:block lg:text-lg">
                             Manage your product catalog.
                         </p>
                     </div>
