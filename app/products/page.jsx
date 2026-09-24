@@ -192,7 +192,7 @@ function ProductsView() {
                                 id="product-search"
                                 value={searchInput}
                                 onChange={handleSearchChange}
-                                placeholder="Search products..."
+                                placeholder="Search..."
                                 aria-label="Search products"
                             />
                         </div>
@@ -233,7 +233,7 @@ function ProductsView() {
                     </div>
                 </div>
 
-                <div className="mt-0">
+                <div className="product-results mt-0">
                     {isLoading ? (
                         <Loader label="Loading products..." />
                     ) : errorMessage ? (
