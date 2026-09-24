@@ -208,6 +208,9 @@ export default function AppShell({ children }) {
                         >
                             <BrandLogo compact />
                         </Link>
+                        <p className="text-sm font-semibold text-slate-700 sm:text-base">
+                            Product catalog
+                        </p>
                     </div>
                 </header>
                 {children}
