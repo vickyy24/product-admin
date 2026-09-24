@@ -169,8 +169,27 @@ function ProductsView() {
     return (
         <AppShell>
             <main className="mx-auto w-[96%] max-w-[1600px] py-4">
-                <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
-                    <div className="grid min-w-0 flex-1 grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr]">
+                <div className="flex justify-end">
+                    <Link
+                        className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand px-4 py-2.5 text-center text-sm font-semibold text-white shadow-[0_8px_18px_rgba(15,118,110,0.28)] transition duration-200 hover:-translate-y-0.5 hover:bg-[#0b5d57] hover:shadow-[0_10px_22px_rgba(15,118,110,0.36)] active:translate-y-0 lg:w-auto"
+                        href="/products/new"
+                    >
+                        <svg
+                            className="h-4 w-4"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            aria-hidden="true"
+                        >
+                            <path d="M12 5v14M5 12h14" />
+                        </svg>
+                        Add product
+                    </Link>
+                </div>
+
+                <div className="mt-4 lg:rounded-t-xl lg:border lg:border-b-0 lg:border-slate-200 lg:bg-white lg:p-4 lg:pb-3">
+                    <div className="grid min-w-0 grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr]">
                     <input
                         className="min-w-0 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm outline-none transition focus:border-brand focus:bg-white focus:ring-2 focus:ring-teal-100"
                         value={searchInput}
@@ -199,26 +218,10 @@ function ProductsView() {
                         <option value="rating">Rating</option>
                         <option value="title">Title</option>
                     </select>
-                    </div>
-                    <Link
-                        className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand px-4 py-2.5 text-center text-sm font-semibold text-white shadow-[0_8px_18px_rgba(15,118,110,0.28)] transition duration-200 hover:-translate-y-0.5 hover:bg-[#0b5d57] hover:shadow-[0_10px_22px_rgba(15,118,110,0.36)] active:translate-y-0 lg:w-auto"
-                        href="/products/new"
-                    >
-                        <svg
-                            className="h-4 w-4"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            aria-hidden="true"
-                        >
-                            <path d="M12 5v14M5 12h14" />
-                        </svg>
-                        Add product
-                    </Link>
+                </div>
                 </div>
 
-                <div className="mt-6">
+                <div className="mt-0">
                     {isLoading ? (
                         <StatusMessage title="Loading products..." />
                     ) : errorMessage ? (
