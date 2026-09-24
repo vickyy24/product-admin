@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import AppShell from '../../components/AppShell';
+import DashboardLayout from '../../components/DashboardLayout';
 import Pagination from '../../components/Pagination';
 import ProductCards from '../../components/ProductCards';
 import ProductTable from '../../components/ProductTable';
@@ -167,7 +167,7 @@ function ProductsView() {
     }
 
     return (
-        <AppShell>
+        <DashboardLayout>
             <main className="mx-auto w-[96%] max-w-[1600px] py-4 lg:w-full lg:max-w-none lg:px-3 lg:py-3">
                 <div className="mt-0 lg:rounded-t-xl lg:border lg:border-b-0 lg:border-slate-200 lg:bg-white lg:p-4 lg:pb-3">
                     <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:gap-10">
@@ -285,7 +285,7 @@ function ProductsView() {
                     )}
                 </div>
             </main>
-        </AppShell>
+        </DashboardLayout>
     );
 }
 

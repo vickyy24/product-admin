@@ -6,7 +6,7 @@ import { useParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { isAuthenticated } from '../../lib/auth';
 import { getProduct, saveProduct } from '../../lib/products';
-import AppShell from '../../components/AppShell';
+import DashboardLayout from '../../components/DashboardLayout';
 
 const emptyForm = {
     title: '',
@@ -154,7 +154,7 @@ export default function ProductForm() {
     }
 
     return (
-        <AppShell>
+        <DashboardLayout>
             <main className="mx-auto w-[96%] max-w-[1600px] py-4 lg:w-full lg:max-w-none lg:px-3 lg:py-3">
             <Link
                 className="text-sm font-semibold text-slate-500 hover:text-brand"
@@ -295,6 +295,6 @@ export default function ProductForm() {
                 </div>
             </form>
             </main>
-        </AppShell>
+        </DashboardLayout>
     );
 }
