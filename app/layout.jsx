@@ -1,5 +1,4 @@
 import './globals.css';
-import './tailwind.css';
 
 export const metadata = {
     title: 'Nexgensis Technologies | Product Admin',
