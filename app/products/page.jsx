@@ -203,17 +203,6 @@ function ProductsView() {
                         <option value="rating">Rating</option>
                         <option value="title">Title</option>
                     </select>
-                    <select
-                        className="rounded-lg border bg-white px-3 py-2.5 outline-none focus:border-brand"
-                        value={pageSize}
-                        onChange={handlePageSizeChange}
-                    >
-                        {pageSizes.map((size) => (
-                            <option key={size} value={size}>
-                                {size} / page
-                            </option>
-                        ))}
-                    </select>
                 </div>
 
                 <div className="mt-6">
@@ -248,6 +237,8 @@ function ProductsView() {
                                     totalPages={totalPages}
                                     pageSize={pageSize}
                                     total={total}
+                                    pageSizes={pageSizes}
+                                    onPageSizeChange={handlePageSizeChange}
                                     onPageChange={handlePageChange}
                                 />
                             </div>
