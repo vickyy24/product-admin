@@ -1,8 +1,8 @@
 import './globals.css';
 
 export const metadata = {
-    title: 'Product Admin',
-    description: 'Product management dashboard',
+    title: 'Nexgensis Technologies | Product Admin',
+    description: 'Nexgensis Technologies product management dashboard',
 };
 
 export default function RootLayout({ children }) {
