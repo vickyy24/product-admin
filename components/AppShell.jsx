@@ -56,22 +56,12 @@ export default function AppShell({ children }) {
                             );
                         })}
                     </nav>
-                    <div className="border-t border-slate-200 p-4">
-                        <button
-                            className="flex w-full items-center gap-3 rounded-lg border border-slate-200 px-3 py-2.5 text-left text-sm font-semibold text-slate-600 transition hover:bg-slate-50 hover:text-slate-900"
-                            onClick={handleLogout}
-                            type="button"
-                        >
-                            <span aria-hidden="true">↪</span>
-                            Log out
-                        </button>
-                    </div>
                 </div>
             </aside>
 
             <div className="lg:pl-64">
-                <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/95 backdrop-blur lg:hidden">
-                    <div className="flex h-16 items-center justify-between px-4">
+                <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/95 backdrop-blur">
+                    <div className="mx-auto flex h-[72px] w-[92%] max-w-7xl items-center justify-between">
                         <Link
                             className="text-lg font-bold tracking-tight text-brand"
                             href="/products"
@@ -79,10 +69,11 @@ export default function AppShell({ children }) {
                             Product Admin
                         </Link>
                         <button
-                            className="rounded-lg border border-slate-200 px-3 py-2 text-sm font-semibold text-slate-600"
+                            className="inline-flex items-center gap-2 rounded-lg bg-brand px-4 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-teal-800 focus:outline-none focus:ring-2 focus:ring-teal-200"
                             onClick={handleLogout}
                             type="button"
                         >
+                            <span aria-hidden="true">↪</span>
                             Log out
                         </button>
                     </div>
