@@ -58,7 +58,7 @@ export default function ProductTable({ products }) {
 
     return (
         <>
-            <div className="hidden overflow-x-auto rounded-b-xl border border-t-0 bg-white shadow-sm lg:block">
+            <div className="hidden w-full max-w-none overflow-x-auto rounded-b-xl border border-t-0 bg-white shadow-sm lg:block">
                 <table className="w-full text-left">
                     <thead className="border-b border-teal-100 bg-teal-50 text-[11px] uppercase tracking-[0.18em] text-brand">
                         <tr>
