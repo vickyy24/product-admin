@@ -119,6 +119,7 @@ function ProductsView() {
             limit: pageSize,
             skip: (page - 1) * pageSize,
             search: searchQuery,
+            category: selectedCategory,
             sort: selectedSort,
         })
             .then((result) => {
@@ -136,7 +137,7 @@ function ProductsView() {
                     setIsLoading(false);
                 }
             });
-    }, [page, pageSize, searchQuery, selectedSort]);
+    }, [page, pageSize, searchQuery, selectedCategory, selectedSort]);
 
     const visibleProducts = useMemo(() => {
         return (productsResponse?.products || []).filter((product) => {
