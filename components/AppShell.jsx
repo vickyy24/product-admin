@@ -211,7 +211,7 @@ export default function AppShell({ children }) {
                             </Link>
                         ) : null}
                         <div className="min-w-0">
-                            <p className="truncate text-base font-semibold leading-tight text-slate-700 sm:text-lg">
+                            <p className="hidden truncate text-base font-semibold leading-tight text-slate-700 sm:block sm:text-lg">
                                 Manage your product catalog.
                             </p>
                         </div>
