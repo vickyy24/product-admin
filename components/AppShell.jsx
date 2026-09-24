@@ -66,7 +66,7 @@ export default function AppShell({ children }) {
             ) : null}
 
             <aside
-                className={`fixed inset-y-0 left-0 z-30 border-r border-slate-200 bg-white transition-[width,transform] duration-200 ${
+                className={`fixed inset-y-0 left-0 z-30 overflow-hidden border-r border-slate-200 bg-white transition-[width,transform] duration-200 ${
                     isSidebarOpen
                         ? 'w-64 translate-x-0'
                         : 'w-20 -translate-x-full lg:translate-x-0'
