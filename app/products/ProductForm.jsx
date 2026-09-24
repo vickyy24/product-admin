@@ -153,7 +153,7 @@ export default function ProductForm() {
     }
 
     return (
-        <main className="mx-auto w-[92%] max-w-3xl py-8 md:py-10 lg:w-full lg:max-w-none lg:px-3 lg:py-3">
+        <main className="mx-auto w-[92%] max-w-3xl py-8 md:py-10">
             <Link
                 className="text-sm font-semibold text-slate-500 hover:text-brand"
                 href="/products"
