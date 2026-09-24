@@ -148,6 +148,12 @@ function ProductsView() {
     const total = selectedCategory ? visibleProducts.length : productsResponse?.total || 0;
     const totalPages = Math.max(1, Math.ceil(total / pageSize));
 
+    useEffect(() => {
+        if (productsResponse && page > totalPages) {
+            updateSearchParams('page', String(totalPages));
+        }
+    }, [page, productsResponse, totalPages, updateSearchParams]);
+
     if (!isAuthenticated()) {
         return null;
     }
