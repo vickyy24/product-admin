@@ -176,7 +176,7 @@ export default function AppShell({ children }) {
             </aside>
 
             <div className={isSidebarOpen ? 'lg:pl-64' : 'lg:pl-20'}>
-                <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/95 backdrop-blur">
+                <header className="sticky top-0 z-20 border-b border-slate-200 bg-white">
                     <div className="mx-auto flex h-16 w-[92%] max-w-7xl items-center gap-4">
                         {!isSidebarOpen ? (
                             <button
@@ -204,9 +204,6 @@ export default function AppShell({ children }) {
                         >
                             <BrandLogo compact />
                         </Link>
-                        <p className="hidden text-sm font-medium text-slate-500 sm:block">
-                            Product workspace
-                        </p>
                     </div>
                 </header>
                 {children}
