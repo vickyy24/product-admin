@@ -88,12 +88,16 @@ function ProductsView() {
     }, [router]);
 
     useEffect(() => {
+        if (searchInput.trim() === searchQuery) {
+            return;
+        }
+
         const timeoutId = window.setTimeout(() => {
             updateSearchParams('q', searchInput.trim());
         }, 350);
 
         return () => window.clearTimeout(timeoutId);
-    }, [searchInput, updateSearchParams]);
+    }, [searchInput, searchQuery, updateSearchParams]);
 
     useEffect(() => {
         let isMounted = true;
