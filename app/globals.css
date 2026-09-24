@@ -24,18 +24,33 @@ textarea {
     font: inherit;
 }
 
+.form-field-label {
+    color: #334155;
+    letter-spacing: 0.01em;
+}
+
 .product-form-input {
     width: 100%;
     margin-top: 0.5rem;
-    border: 1px solid #e2e8f0;
+    border: 1px solid #cbd5e1;
     border-radius: 0.5rem;
+    background: #f8fafc;
+    color: #182230;
+    font-size: 0.875rem;
+    font-weight: 500;
     padding: 0.625rem 0.75rem;
     outline: none;
+    transition: background-color 150ms, border-color 150ms, box-shadow 150ms;
+}
+
+.product-form-input::placeholder {
+    color: #94a3b8;
 }
 
 .product-form-input:focus {
     border-color: #0f766e;
-    box-shadow: 0 0 0 2px rgb(224 231 255);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgb(204 251 241);
 }
 
 .product-form-textarea {

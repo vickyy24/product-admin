@@ -221,7 +221,7 @@ export default function ProductForm() {
                 ) : null}
 
                 <div className="grid gap-5 md:grid-cols-2">
-                    <label className="text-sm font-semibold text-slate-700" htmlFor="title">
+                    <label className="form-field-label text-sm font-semibold" htmlFor="title">
                         Title
                         <input
                             className="product-form-input"
@@ -234,7 +234,7 @@ export default function ProductForm() {
                         {fieldErrors.title ? <span className="mt-1 block text-xs font-normal text-red-600">{fieldErrors.title}</span> : null}
                     </label>
 
-                    <label className="text-sm font-semibold text-slate-700" htmlFor="category">
+                    <label className="form-field-label text-sm font-semibold" htmlFor="category">
                         Category
                         <input
                             className="product-form-input"
@@ -247,7 +247,7 @@ export default function ProductForm() {
                         {fieldErrors.category ? <span className="mt-1 block text-xs font-normal text-red-600">{fieldErrors.category}</span> : null}
                     </label>
 
-                    <label className="text-sm font-semibold text-slate-700" htmlFor="price">
+                    <label className="form-field-label text-sm font-semibold" htmlFor="price">
                         Price
                         <input
                             className="product-form-input"
@@ -263,7 +263,7 @@ export default function ProductForm() {
                         {fieldErrors.price ? <span className="mt-1 block text-xs font-normal text-red-600">{fieldErrors.price}</span> : null}
                     </label>
 
-                    <label className="text-sm font-semibold text-slate-700" htmlFor="stock">
+                    <label className="form-field-label text-sm font-semibold" htmlFor="stock">
                         Stock
                         <input
                             className="product-form-input"
@@ -279,7 +279,7 @@ export default function ProductForm() {
                     </label>
 
                     <label
-                        className="text-sm font-semibold text-slate-700 md:col-span-2"
+                        className="form-field-label text-sm font-semibold md:col-span-2"
                         htmlFor="description"
                     >
                         Description
@@ -295,7 +295,7 @@ export default function ProductForm() {
                     </label>
 
                     <label
-                        className="text-sm font-semibold text-slate-700 md:col-span-2"
+                        className="form-field-label text-sm font-semibold md:col-span-2"
                         htmlFor="product-image"
                     >
                         Product image

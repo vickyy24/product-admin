@@ -102,12 +102,12 @@ export default function LoginPage() {
 
                 <form className="space-y-5" noValidate onSubmit={handleSubmit}>
                     <label
-                        className="block text-sm font-semibold text-slate-700"
+                        className="form-field-label block text-sm font-semibold"
                         htmlFor="username"
                     >
                         Username
                         <input
-                            className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm font-normal text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-brand focus:ring-2 focus:ring-teal-100"
+                            className="product-form-input mt-2 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm font-normal text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-brand focus:ring-2 focus:ring-teal-100"
                             id="username"
                             name="username"
                             value={credentials.username}
@@ -123,12 +123,12 @@ export default function LoginPage() {
                     </label>
 
                     <label
-                        className="block text-sm font-semibold text-slate-700"
+                        className="form-field-label block text-sm font-semibold"
                         htmlFor="password"
                     >
                         Password
                         <input
-                            className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm font-normal text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-brand focus:ring-2 focus:ring-teal-100"
+                            className="product-form-input mt-2 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm font-normal text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-brand focus:ring-2 focus:ring-teal-100"
                             id="password"
                             name="password"
                             type="password"
