@@ -58,7 +58,7 @@ export default function ProductDetailsPage() {
     if (errorMessage && !product) {
         return (
             <AppShell>
-                <main className="mx-auto w-[92%] max-w-7xl py-10">
+                <main className="mx-auto w-[96%] max-w-[1600px] py-4 lg:w-full lg:max-w-none lg:px-3 lg:py-3">
                     <StatusMessage
                         title="Product not found"
                         description={errorMessage}
@@ -88,7 +88,7 @@ export default function ProductDetailsPage() {
     if (!product) {
         return (
             <AppShell>
-                <main className="mx-auto w-[92%] max-w-7xl py-10">
+                <main className="mx-auto w-[96%] max-w-[1600px] py-4 lg:w-full lg:max-w-none lg:px-3 lg:py-3">
                     <StatusMessage title="Loading product..." />
                 </main>
             </AppShell>
@@ -97,7 +97,7 @@ export default function ProductDetailsPage() {
 
     return (
         <AppShell>
-            <main className="mx-auto w-[92%] max-w-7xl py-8 md:py-10">
+            <main className="mx-auto w-[96%] max-w-[1600px] py-4 lg:w-full lg:max-w-none lg:px-3 lg:py-3">
                 <Link
                     className="text-sm font-semibold text-slate-500 hover:text-brand"
                     href="/products"
@@ -105,9 +105,9 @@ export default function ProductDetailsPage() {
                     ← Back to products
                 </Link>
 
-                <div className="mt-4 flex flex-col justify-between gap-5 sm:flex-row sm:items-start">
+                <div className="mt-2 flex flex-col justify-between gap-5 sm:flex-row sm:items-start">
                     <div>
-                        <h1 className="text-3xl font-bold text-slate-900">{product.title}</h1>
+                        <h1 className="text-2xl font-bold text-slate-900">{product.title}</h1>
                         <p className="mt-1 text-sm capitalize text-slate-500">{product.category}</p>
                     </div>
                     <div className="flex gap-2">
