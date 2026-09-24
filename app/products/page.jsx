@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import DashboardLayout from '../../components/DashboardLayout';
+import Loader from '../../components/Loader';
 import Pagination from '../../components/Pagination';
 import ProductCards from '../../components/ProductCards';
 import ProductTable from '../../components/ProductTable';
@@ -246,7 +247,7 @@ function ProductsView() {
 
                 <div className="mt-0">
                     {isLoading ? (
-                        <StatusMessage title="Loading products..." />
+                        <Loader label="Loading products..." />
                     ) : errorMessage ? (
                         <StatusMessage
                             title="Something went wrong"
@@ -294,7 +295,7 @@ export default function ProductsPage() {
         <Suspense
             fallback={
                 <main className="mx-auto w-[92%] max-w-7xl py-10">
-                    <StatusMessage title="Loading products..." />
+                    <Loader label="Loading products..." />
                 </main>
             }
         >

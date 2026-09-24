@@ -6,6 +6,7 @@ import { useParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import DashboardLayout from '../../../components/DashboardLayout';
 import ConfirmDialog from '../../../components/ConfirmDialog';
+import Loader from '../../../components/Loader';
 import StatusMessage from '../../../components/StatusMessage';
 import { isAuthenticated } from '../../../lib/auth';
 import { getProduct, removeProduct } from '../../../lib/products';
@@ -92,7 +93,7 @@ export default function ProductDetailsPage() {
         return (
             <DashboardLayout>
                 <main className="mx-auto w-[96%] max-w-[1600px] py-4 lg:w-full lg:max-w-none lg:px-3 lg:py-3">
-                    <StatusMessage title="Loading product..." />
+                    <Loader label="Loading product..." />
                 </main>
             </DashboardLayout>
         );
