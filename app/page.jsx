@@ -4,16 +4,15 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { api } from '../lib/api';
 
-const initialCredentials = {
-    username: 'emilys',
-    password: 'emilyspass',
-};
-
 export default function LoginPage() {
     const router = useRouter();
-    const [credentials, setCredentials] = useState(initialCredentials);
+    const [credentials, setCredentials] = useState({
+        username: '',
+        password: '',
+    });
     const [errorMessage, setErrorMessage] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [fieldErrors, setFieldErrors] = useState({});
 
     function handleInputChange(event) {
         const { name, value } = event.target;
@@ -21,12 +20,40 @@ export default function LoginPage() {
             ...currentCredentials,
             [name]: value,
         }));
+        setFieldErrors((currentErrors) => ({
+            ...currentErrors,
+            [name]: '',
+        }));
+        setErrorMessage('');
+    }
+
+    function validateCredentials() {
+        const errors = {};
+
+        if (!credentials.username.trim()) {
+            errors.username = 'Username is required.';
+        }
+
+        if (!credentials.password) {
+            errors.password = 'Password is required.';
+        } else if (credentials.password.length < 6) {
+            errors.password = 'Password must be at least 6 characters.';
+        }
+
+        return errors;
     }
 
     async function handleSubmit(event) {
         event.preventDefault();
 
         if (isSubmitting) {
+            return;
+        }
+
+        const validationErrors = validateCredentials();
+
+        if (Object.keys(validationErrors).length > 0) {
+            setFieldErrors(validationErrors);
             return;
         }
 
@@ -79,6 +106,11 @@ export default function LoginPage() {
                             autoComplete="username"
                             required
                         />
+                        {fieldErrors.username ? (
+                            <span className="mt-1 text-xs font-normal text-red-600">
+                                {fieldErrors.username}
+                            </span>
+                        ) : null}
                     </label>
 
                     <label className="block text-sm font-semibold text-slate-700">
@@ -92,6 +124,11 @@ export default function LoginPage() {
                             autoComplete="current-password"
                             required
                         />
+                        {fieldErrors.password ? (
+                            <span className="mt-1 text-xs font-normal text-red-600">
+                                {fieldErrors.password}
+                            </span>
+                        ) : null}
                     </label>
 
                     <button
