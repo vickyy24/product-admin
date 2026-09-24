@@ -58,7 +58,7 @@ export default function AppShell({ children }) {
         <div className="min-h-screen overflow-x-hidden bg-slate-50">
             {isSidebarOpen ? (
                 <button
-                    className="fixed inset-0 z-20 bg-slate-950/30 lg:hidden"
+                    className="fixed inset-0 z-20 bg-slate-950/35 backdrop-blur-md lg:hidden"
                     onClick={() => setIsSidebarOpen(false)}
                     type="button"
                     aria-label="Close sidebar"
