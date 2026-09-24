@@ -170,12 +170,8 @@ function ProductsView() {
         <AppShell>
             <main className="mx-auto w-[92%] max-w-7xl py-8 md:py-10">
                 <div className="flex flex-col items-stretch gap-5 sm:flex-row sm:items-center sm:justify-between">
-                    <div>
-                        <h1 className="text-3xl font-bold text-slate-900">Products</h1>
-                        <p className="mt-1 text-sm text-slate-500">Manage your product catalog.</p>
-                    </div>
                     <Link
-                        className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand px-4 py-2.5 text-center text-sm font-semibold text-white shadow-sm transition duration-200 hover:bg-[#0b5d57] hover:shadow-md sm:w-auto"
+                        className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand px-4 py-2.5 text-center text-sm font-semibold text-white shadow-[0_8px_18px_rgba(15,118,110,0.28)] transition duration-200 hover:-translate-y-0.5 hover:bg-[#0b5d57] hover:shadow-[0_10px_22px_rgba(15,118,110,0.36)] active:translate-y-0 sm:w-auto"
                         href="/products/new"
                     >
                         <svg
