@@ -6,6 +6,7 @@ import { useParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { isAuthenticated } from '../../lib/auth';
 import { getProduct, saveProduct } from '../../lib/products';
+import AppShell from '../../components/AppShell';
 
 const emptyForm = {
     title: '',
@@ -153,7 +154,8 @@ export default function ProductForm() {
     }
 
     return (
-        <main className="mx-auto w-[96%] max-w-[1600px] py-4 lg:w-full lg:max-w-none lg:px-3 lg:py-3">
+        <AppShell>
+            <main className="mx-auto w-[96%] max-w-[1600px] py-4 lg:w-full lg:max-w-none lg:px-3 lg:py-3">
             <Link
                 className="text-sm font-semibold text-slate-500 hover:text-brand"
                 href="/products"
@@ -280,6 +282,7 @@ export default function ProductForm() {
                     </button>
                 </div>
             </form>
-        </main>
+            </main>
+        </AppShell>
     );
 }
