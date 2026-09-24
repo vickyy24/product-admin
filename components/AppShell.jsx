@@ -209,10 +209,7 @@ export default function AppShell({ children }) {
                             <BrandLogo compact />
                         </Link>
                         <div className="min-w-0">
-                            <p className="truncate text-base font-bold leading-tight text-slate-900 sm:text-lg">
-                                Products
-                            </p>
-                            <p className="truncate text-xs text-slate-500 sm:text-sm">
+                            <p className="truncate text-base font-semibold leading-tight text-slate-700 sm:text-lg">
                                 Manage your product catalog.
                             </p>
                         </div>
