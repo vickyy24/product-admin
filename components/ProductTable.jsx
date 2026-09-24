@@ -89,19 +89,19 @@ export default function ProductTable({ products }) {
                                 <td className="px-5 py-4">
                                     <div className="flex justify-center gap-2">
                                         <Link
-                                            className="rounded-lg bg-slate-50 px-3 py-2 font-semibold text-slate-700 transition hover:bg-slate-100 hover:text-slate-900"
+                                            className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 font-semibold text-slate-700 transition hover:bg-slate-100 hover:text-slate-900"
                                             href={`/products/${product.id}`}
                                         >
                                             View
                                         </Link>
                                         <Link
-                                            className="rounded-lg bg-teal-50 px-3 py-2 font-semibold text-teal-700 transition hover:bg-teal-100 hover:text-teal-800"
+                                            className="rounded-lg border border-teal-200 bg-teal-50 px-3 py-2 font-semibold text-teal-700 transition hover:bg-teal-100 hover:text-teal-800"
                                             href={`/products/${product.id}/edit`}
                                         >
                                             Edit
                                         </Link>
                                         <button
-                                            className="rounded-lg bg-red-50 px-3 py-2 font-semibold text-red-700 transition hover:bg-red-100 hover:text-red-800 disabled:cursor-not-allowed disabled:opacity-60"
+                                            className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 font-semibold text-red-700 transition hover:bg-red-100 hover:text-red-800 disabled:cursor-not-allowed disabled:opacity-60"
                                             type="button"
                                             onClick={() => openDeleteDialog(product)}
                                             disabled={isDeleting}

@@ -136,13 +136,13 @@ export default function ProductDetailsPage() {
                     </div>
                     <div className="flex gap-2">
                         <Link
-                            className="rounded-lg bg-indigo-50 px-4 py-2.5 text-sm font-semibold text-indigo-700 hover:bg-indigo-100"
+                            className="rounded-lg border border-indigo-200 bg-indigo-50 px-4 py-2.5 text-sm font-semibold text-indigo-700 hover:bg-indigo-100"
                             href={`/products/${product.id}/edit`}
                         >
                             Edit
                         </Link>
                         <button
-                            className="rounded-lg bg-red-50 px-4 py-2.5 text-sm font-semibold text-red-700 hover:bg-red-100 disabled:opacity-60"
+                            className="rounded-lg border border-red-200 bg-red-50 px-4 py-2.5 text-sm font-semibold text-red-700 hover:bg-red-100 disabled:opacity-60"
                             onClick={handleDelete}
                             type="button"
                             disabled={isDeleting}
