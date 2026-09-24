@@ -189,36 +189,50 @@ function ProductsView() {
                 </div>
 
                 <div className="mt-4 lg:rounded-t-xl lg:border lg:border-b-0 lg:border-slate-200 lg:bg-white lg:p-4 lg:pb-3">
+                    <h2 className="mb-3 text-lg font-bold text-slate-900">Product catalogue</h2>
                     <div className="grid min-w-0 grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr]">
-                    <input
-                        className="min-w-0 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm outline-none transition focus:border-brand focus:bg-white focus:ring-2 focus:ring-teal-100"
-                        value={searchInput}
-                        onChange={handleSearchChange}
-                        placeholder="Search products..."
-                    />
-                    <select
-                        className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm outline-none transition focus:border-brand focus:bg-white focus:ring-2 focus:ring-teal-100"
-                        value={selectedCategory}
-                        onChange={handleCategoryChange}
-                    >
-                        <option value="">All categories</option>
-                        {categories.map((category) => (
-                            <option key={category} value={category}>
-                                {category}
-                            </option>
-                        ))}
-                    </select>
-                    <select
-                        className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm outline-none transition focus:border-brand focus:bg-white focus:ring-2 focus:ring-teal-100"
-                        value={selectedSort}
-                        onChange={handleSortChange}
-                    >
-                        <option value="">Sort by</option>
-                        <option value="price">Price</option>
-                        <option value="rating">Rating</option>
-                        <option value="title">Title</option>
-                    </select>
-                </div>
+                        <div className="relative">
+                            <svg
+                                className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                aria-hidden="true"
+                            >
+                                <circle cx="11" cy="11" r="6.5" />
+                                <path d="m16 16 4 4" />
+                            </svg>
+                            <input
+                                className="h-10 w-full min-w-0 rounded-lg border border-slate-200 bg-slate-50 py-2 pl-9 pr-3 text-sm outline-none transition focus:border-brand focus:bg-white focus:ring-2 focus:ring-teal-100"
+                                value={searchInput}
+                                onChange={handleSearchChange}
+                                placeholder="Search products..."
+                            />
+                        </div>
+                        <select
+                            className="h-10 rounded-lg border border-slate-200 bg-slate-50 px-3 text-sm outline-none transition focus:border-brand focus:bg-white focus:ring-2 focus:ring-teal-100"
+                            value={selectedCategory}
+                            onChange={handleCategoryChange}
+                        >
+                            <option value="">All categories</option>
+                            {categories.map((category) => (
+                                <option key={category} value={category}>
+                                    {category}
+                                </option>
+                            ))}
+                        </select>
+                        <select
+                            className="h-10 rounded-lg border border-slate-200 bg-slate-50 px-3 text-sm outline-none transition focus:border-brand focus:bg-white focus:ring-2 focus:ring-teal-100"
+                            value={selectedSort}
+                            onChange={handleSortChange}
+                        >
+                            <option value="">Sort by</option>
+                            <option value="price">Price</option>
+                            <option value="rating">Rating</option>
+                            <option value="title">Title</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div className="mt-0">
