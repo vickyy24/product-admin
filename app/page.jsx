@@ -75,6 +75,7 @@ export default function LoginPage() {
 
             localStorage.setItem('auth_token', data.accessToken);
             localStorage.setItem('auth_user', JSON.stringify(data));
+            localStorage.setItem('auth_username', credentials.username);
             router.replace('/products');
         } catch (error) {
             setErrorMessage(error.message);

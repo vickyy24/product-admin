@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { logout } from '../lib/auth';
+import { getUser, logout } from '../lib/auth';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 
@@ -10,9 +10,11 @@ export default function DashboardLayout({ children }) {
     const pathname = usePathname();
     const router = useRouter();
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [user, setUser] = useState(null);
 
     useEffect(() => {
         setIsSidebarOpen(window.matchMedia('(min-width: 1024px)').matches);
+        setUser(getUser());
     }, []);
 
     function handleLogout() {
@@ -31,7 +33,7 @@ export default function DashboardLayout({ children }) {
                 onLogout={handleLogout}
             />
             <div className={`pt-16 ${isSidebarOpen ? 'lg:pl-64' : 'lg:pl-20'}`}>
-                <Navbar isSidebarOpen={isSidebarOpen} onToggleSidebar={() => setIsSidebarOpen((current) => !current)} />
+                <Navbar isSidebarOpen={isSidebarOpen} onToggleSidebar={() => setIsSidebarOpen((current) => !current)} user={user} />
                 {children}
             </div>
         </div>

@@ -186,9 +186,9 @@ function ProductsView() {
                         </div>
                         <div className="grid min-w-0 flex-1 grid-cols-1 gap-3 max-sm:grid-cols-3 max-sm:gap-1.5 sm:grid-cols-2 lg:ml-auto lg:flex-none lg:grid-cols-[minmax(220px,320px)_150px_150px_auto]">
                         <div className="relative">
-                            <FiSearch                             className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400 max-sm:left-2 max-sm:h-3.5 max-sm:w-3.5" aria-hidden="true" />
+                            <FiSearch className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400 max-sm:left-2 max-sm:h-3.5 max-sm:w-3.5" aria-hidden="true" />
                             <input
-                                className="h-10 w-full min-w-0 rounded-lg border border-slate-200 bg-slate-50 py-2 pl-9 pr-3 text-sm outline-none transition focus:border-brand focus:bg-white focus:ring-2 focus:ring-teal-100 max-sm:h-9 max-sm:pl-7 max-sm:pr-1 max-sm:text-[11px]"
+                                className="h-10 w-full min-w-0 rounded-lg border border-slate-200 bg-slate-50 py-2 pl-9 pr-3 text-sm outline-none transition focus:border-brand focus:bg-white focus:ring-2 focus:ring-teal-100 max-sm:h-9 max-sm:pl-7 max-sm:pr-1 max-sm:text-[11px] max-sm:placeholder:text-[0.6875rem]"
                                 id="product-search"
                                 value={searchInput}
                                 onChange={handleSearchChange}
@@ -197,7 +197,7 @@ function ProductsView() {
                             />
                         </div>
                         <select
-                            className="product-filter-control"
+                            className="h-10 w-full rounded-lg border border-slate-200 bg-slate-50 px-3 text-sm outline-none transition focus:border-brand focus:bg-white focus:ring-2 focus:ring-teal-100 max-sm:h-[2.25rem] max-sm:px-1.5 max-sm:text-[0.6875rem]"
                             id="product-category"
                             value={selectedCategory}
                             onChange={handleCategoryChange}
@@ -211,7 +211,7 @@ function ProductsView() {
                             ))}
                         </select>
                         <select
-                            className="product-filter-control"
+                            className="h-10 w-full rounded-lg border border-slate-200 bg-slate-50 px-3 text-sm outline-none transition focus:border-brand focus:bg-white focus:ring-2 focus:ring-teal-100 max-sm:h-[2.25rem] max-sm:px-1.5 max-sm:text-[0.6875rem]"
                             id="product-sort"
                             value={selectedSort}
                             onChange={handleSortChange}

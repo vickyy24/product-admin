@@ -40,8 +40,8 @@ export default function Sidebar({ isOpen, pathname, onToggle, onClose, onLogout 
                     </Link>
                 </nav>
                 <div className={`border-t border-slate-200 ${isOpen ? 'p-4' : 'p-2'}`}>
-                    <button className={`flex w-full items-center rounded-lg border border-red-400 bg-red-100 py-2.5 text-left text-sm font-semibold text-red-800 shadow-md transition hover:border-red-500 hover:bg-red-200 hover:text-red-900 hover:shadow-lg ${isOpen ? 'gap-3 px-3' : 'justify-center px-2'}`} onClick={onLogout} type="button">
-                        <FiLogOut className="h-5 w-5" aria-hidden="true" />
+                    <button className={`group flex w-full items-center rounded-xl border border-rose-300 bg-rose-50/80 py-2.5 text-left text-sm font-semibold text-rose-700 shadow-sm transition-all duration-200 hover:border-red-500 hover:bg-red-100 hover:text-red-900 hover:shadow-md active:scale-95 ${isOpen ? 'gap-3 px-3.5' : 'justify-center px-2'}`} onClick={onLogout} type="button">
+                        <FiLogOut className="h-5 w-5 text-rose-500 transition-transform duration-200 group-hover:-translate-x-0.5 group-hover:text-red-700" aria-hidden="true" />
                         <span className={isOpen ? '' : 'lg:hidden'}>Log out</span>
                     </button>
                 </div>
