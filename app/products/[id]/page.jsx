@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import AppShell from '../../../components/AppShell';
+import ConfirmDialog from '../../../components/ConfirmDialog';
 import StatusMessage from '../../../components/StatusMessage';
 import { isAuthenticated } from '../../../lib/auth';
 import { getProduct, removeProduct } from '../../../lib/products';
@@ -15,12 +16,17 @@ export default function ProductDetailsPage() {
     const [product, setProduct] = useState(null);
     const [errorMessage, setErrorMessage] = useState('');
     const [isDeleting, setIsDeleting] = useState(false);
+    const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
 
     function handleDelete() {
-        if (isDeleting || !window.confirm('Delete this product?')) {
+        if (isDeleting) {
             return;
         }
 
+        setIsDeleteDialogOpen(true);
+    }
+
+    function confirmDelete() {
         setIsDeleting(true);
         removeProduct(product.id)
             .then(() => {
@@ -28,7 +34,10 @@ export default function ProductDetailsPage() {
                 router.replace('/products');
             })
             .catch((error) => setErrorMessage(error.message))
-            .finally(() => setIsDeleting(false));
+            .finally(() => {
+                setIsDeleting(false);
+                setIsDeleteDialogOpen(false);
+            });
     }
 
     useEffect(() => {
@@ -63,6 +72,15 @@ export default function ProductDetailsPage() {
                         }
                     />
                 </main>
+                {isDeleteDialogOpen ? (
+                    <ConfirmDialog
+                        title="Delete this product?"
+                        description="This product will be removed from your dashboard. This action cannot be undone."
+                        isConfirming={isDeleting}
+                        onCancel={() => setIsDeleteDialogOpen(false)}
+                        onConfirm={confirmDelete}
+                    />
+                ) : null}
             </AppShell>
         );
     }
