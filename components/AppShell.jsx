@@ -2,7 +2,9 @@
 
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { logout } from '../lib/auth';
+import BrandLogo from './BrandLogo';
 
 function ProductsIcon() {
     return (
@@ -41,6 +43,11 @@ function LogoutIcon() {
 export default function AppShell({ children }) {
     const pathname = usePathname();
     const router = useRouter();
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+    useEffect(() => {
+        setIsSidebarOpen(window.matchMedia('(min-width: 1024px)').matches);
+    }, []);
 
     function handleLogout() {
         logout();
@@ -49,57 +56,153 @@ export default function AppShell({ children }) {
 
     return (
         <div className="min-h-screen bg-slate-50">
-            <aside className="fixed inset-y-0 left-0 z-30 hidden w-64 border-r border-slate-200 bg-white lg:block">
+            {isSidebarOpen ? (
+                <button
+                    className="fixed inset-0 z-20 bg-slate-950/30 lg:hidden"
+                    onClick={() => setIsSidebarOpen(false)}
+                    type="button"
+                    aria-label="Close sidebar"
+                />
+            ) : null}
+
+            <aside
+                className={`fixed inset-y-0 left-0 z-30 border-r border-slate-200 bg-white transition-[width,transform] duration-200 ${
+                    isSidebarOpen
+                        ? 'w-64 translate-x-0'
+                        : 'w-20 -translate-x-full lg:translate-x-0'
+                }`}
+            >
                 <div className="flex h-full flex-col">
-                    <div className="flex h-16 items-center border-b border-slate-200 px-6">
+                    <div
+                        className={`relative flex h-16 items-center border-b border-slate-200 ${
+                            isSidebarOpen ? 'px-6' : 'justify-center px-2'
+                        }`}
+                    >
                         <Link
-                            className="text-lg font-bold tracking-tight text-brand"
+                            className={`inline-flex items-center ${
+                                isSidebarOpen ? '' : 'lg:hidden'
+                            }`}
                             href="/products"
                         >
-                            Product Admin
+                            <BrandLogo />
                         </Link>
+                        <button
+                            className={`hidden h-10 w-10 items-center justify-center rounded-lg border border-slate-200 bg-white text-brand shadow-sm transition hover:border-brand hover:bg-teal-50 lg:inline-flex ${
+                                isSidebarOpen
+                                    ? 'absolute right-3 top-3'
+                                    : 'relative'
+                            }`}
+                            onClick={() => setIsSidebarOpen((current) => !current)}
+                            type="button"
+                            aria-label={isSidebarOpen ? 'Collapse sidebar' : 'Expand sidebar'}
+                            aria-expanded={isSidebarOpen}
+                        >
+                            <svg
+                                className="h-5 w-5"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                aria-hidden="true"
+                            >
+                                {isSidebarOpen ? (
+                                    <>
+                                        <path d="m14 7-5 5 5 5" />
+                                        <path d="m19 7-5 5 5 5" />
+                                    </>
+                                ) : (
+                                    <>
+                                        <path d="m10 7 5 5-5 5" />
+                                        <path d="m5 7 5 5-5 5" />
+                                    </>
+                                )}
+                            </svg>
+                        </button>
+                        <button
+                            className="ml-auto rounded-lg p-2 text-slate-400 transition hover:bg-slate-100 hover:text-slate-700 lg:hidden"
+                            onClick={() => setIsSidebarOpen(false)}
+                            type="button"
+                            aria-label="Close sidebar"
+                            aria-expanded={isSidebarOpen}
+                        >
+                            <span className="text-xl leading-none">×</span>
+                        </button>
                     </div>
 
-                    <nav className="flex-1 space-y-1 p-4">
-                        <p className="px-3 pb-3 text-xs font-semibold uppercase tracking-wider text-slate-400">
+                    <nav
+                        className={`flex-1 space-y-1 ${
+                            isSidebarOpen ? 'p-4' : 'p-2'
+                        }`}
+                    >
+                        <p
+                            className={`px-3 pb-3 text-xs font-semibold uppercase tracking-wider text-slate-400 ${
+                                isSidebarOpen ? '' : 'lg:hidden'
+                            }`}
+                        >
                             Workspace
                         </p>
                         <Link
-                            className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-semibold transition ${
+                            className={`flex items-center rounded-lg py-2.5 text-sm font-semibold transition ${
+                                isSidebarOpen ? 'gap-3 px-3' : 'justify-center px-2'
+                            } ${
                                 pathname.startsWith('/products')
-                                    ? 'bg-teal-50 text-brand'
+                                    ? 'bg-brand text-white shadow-[0_6px_14px_rgba(15,118,110,0.24)] hover:bg-[#0b5d57]'
                                     : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'
                             }`}
                             href="/products"
                         >
                             <ProductsIcon />
-                            Products
+                            <span className={isSidebarOpen ? '' : 'lg:hidden'}>Products</span>
                         </Link>
                     </nav>
 
-                    <div className="border-t border-slate-200 p-4">
+                    <div
+                        className={`border-t border-slate-200 ${
+                            isSidebarOpen ? 'p-4' : 'p-2'
+                        }`}
+                    >
                         <button
-                            className="flex w-full items-center gap-3 rounded-lg border border-red-200 bg-red-50 px-3 py-2.5 text-left text-sm font-semibold text-red-700 transition hover:border-red-300 hover:bg-red-100"
+                            className={`flex w-full items-center rounded-lg border border-red-200 bg-red-50 py-2.5 text-left text-sm font-semibold text-red-700 transition hover:border-red-300 hover:bg-red-100 ${
+                                isSidebarOpen ? 'gap-3 px-3' : 'justify-center px-2'
+                            }`}
                             onClick={handleLogout}
                             type="button"
                         >
                             <LogoutIcon />
-                            Log out
+                            <span className={isSidebarOpen ? '' : 'lg:hidden'}>Log out</span>
                         </button>
                     </div>
                 </div>
             </aside>
 
-            <div className="lg:pl-64">
+            <div className={isSidebarOpen ? 'lg:pl-64' : 'lg:pl-20'}>
                 <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/95 backdrop-blur">
-                    <div className="mx-auto flex h-[72px] w-[92%] max-w-7xl items-center">
+                    <div className="mx-auto flex h-[72px] w-[92%] max-w-7xl items-center gap-4">
+                        <button
+                            className="rounded-lg border border-slate-200 bg-white p-2 text-slate-500 shadow-sm transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 lg:hidden"
+                            onClick={() => setIsSidebarOpen((current) => !current)}
+                            type="button"
+                            aria-label={isSidebarOpen ? 'Close sidebar' : 'Open sidebar'}
+                            aria-expanded={isSidebarOpen}
+                        >
+                            <svg
+                                className="h-5 w-5"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                aria-hidden="true"
+                            >
+                                <path d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
                         <Link
-                            className="text-lg font-bold tracking-tight text-brand lg:hidden"
+                            className="inline-flex items-center lg:hidden"
                             href="/products"
                         >
-                            Product Admin
+                            <BrandLogo compact />
                         </Link>
-                        <p className="hidden text-sm font-medium text-slate-500 lg:block">
+                        <p className="hidden text-sm font-medium text-slate-500 sm:block">
                             Product workspace
                         </p>
                     </div>
