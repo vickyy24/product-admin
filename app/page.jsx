@@ -99,7 +99,7 @@ export default function LoginPage() {
                     <label className="block text-sm font-semibold text-slate-700">
                         Username
                         <input
-                            className="mt-2 w-full rounded-lg border px-3 py-2.5 outline-none transition focus:border-brand focus:ring-2 focus:ring-indigo-100"
+                            className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm font-normal text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-brand focus:ring-2 focus:ring-teal-100"
                             name="username"
                             value={credentials.username}
                             onChange={handleInputChange}
@@ -116,7 +116,7 @@ export default function LoginPage() {
                     <label className="block text-sm font-semibold text-slate-700">
                         Password
                         <input
-                            className="mt-2 w-full rounded-lg border px-3 py-2.5 outline-none transition focus:border-brand focus:ring-2 focus:ring-indigo-100"
+                            className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm font-normal text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-brand focus:ring-2 focus:ring-teal-100"
                             name="password"
                             type="password"
                             value={credentials.password}
