@@ -6,7 +6,7 @@ import { api } from '../lib/api';
 
 const initialCredentials = {
     username: 'emilys',
-    password: 'emilyspass'
+    password: 'emilyspass',
 };
 
 export default function LoginPage() {
@@ -19,7 +19,7 @@ export default function LoginPage() {
         const { name, value } = event.target;
         setCredentials((currentCredentials) => ({
             ...currentCredentials,
-            [name]: value
+            [name]: value,
         }));
     }
 
@@ -36,7 +36,7 @@ export default function LoginPage() {
         try {
             const { data } = await api.post('/auth/login', {
                 ...credentials,
-                expiresInMins: 30
+                expiresInMins: 30,
             });
 
             localStorage.setItem('auth_token', data.accessToken);
