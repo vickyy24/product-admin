@@ -74,7 +74,7 @@ export default function AppShell({ children }) {
             >
                 <div className="flex h-full flex-col">
                     <div
-                        className={`relative flex h-16 items-center border-b border-slate-200 ${
+                        className={`relative flex h-16 items-center ${
                             isSidebarOpen ? 'px-6' : 'justify-center px-2'
                         }`}
                     >
