@@ -23,3 +23,56 @@
         font: inherit;
     }
 }
+
+.product-form-input {
+    width: 100%;
+    margin-top: 0.5rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    padding: 0.625rem 0.75rem;
+    outline: none;
+}
+
+.product-form-input:focus {
+    border-color: #0f766e;
+    box-shadow: 0 0 0 2px rgb(224 231 255);
+}
+
+.product-form-textarea {
+    min-height: 8rem;
+}
+
+.product-filter-control {
+    height: 2.5rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    background: #f8fafc;
+    padding: 0 0.75rem;
+    font-size: 0.875rem;
+    outline: none;
+    transition: background-color 150ms, border-color 150ms, box-shadow 150ms;
+}
+
+.product-filter-control:focus {
+    border-color: #0f766e;
+    background: #fff;
+    box-shadow: 0 0 0 2px rgb(204 251 241);
+}
+
+.add-product-action {
+    align-items: center;
+    justify-content: center;
+    gap: 0.375rem;
+    border-radius: 0.75rem;
+    background: #0f766e;
+    padding: 0.5rem 0.75rem;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    box-shadow: 0 8px 18px rgb(15 118 110 / 28%);
+    transition: background-color 150ms, box-shadow 150ms;
+}
+
+.add-product-action:hover {
+    background: #0b5d57;
+}
