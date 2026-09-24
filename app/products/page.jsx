@@ -168,7 +168,7 @@ function ProductsView() {
 
     return (
         <AppShell>
-            <main className="mx-auto w-[96%] max-w-[1600px] py-4">
+            <main className="mx-auto w-[96%] max-w-[1600px] py-4 lg:w-full lg:max-w-none lg:px-3 lg:py-3">
                 <div className="mt-0 lg:rounded-t-xl lg:border lg:border-b-0 lg:border-slate-200 lg:bg-white lg:p-4 lg:pb-3">
                     <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:gap-10">
                         <div className="flex items-center justify-between gap-3 lg:contents">
