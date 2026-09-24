@@ -208,12 +208,9 @@ export default function AppShell({ children }) {
                                 )}
                             </svg>
                         </button>
-                        <Link
-                            className="absolute left-12 inline-flex items-center lg:hidden"
-                            href="/products"
-                        >
-                            <BrandLogo compact />
-                        </Link>
+                        <p className="absolute left-12 truncate text-sm font-semibold text-slate-700 lg:hidden">
+                            Manage your product catalog.
+                        </p>
                     </div>
                 </header>
                 {children}
