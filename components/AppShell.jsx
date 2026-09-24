@@ -202,12 +202,14 @@ export default function AppShell({ children }) {
                                 </svg>
                             </button>
                         ) : null}
-                        <Link
-                            className="inline-flex items-center lg:hidden"
-                            href="/products"
-                        >
-                            <BrandLogo compact />
-                        </Link>
+                        {!isSidebarOpen ? (
+                            <Link
+                                className="inline-flex items-center lg:hidden"
+                                href="/products"
+                            >
+                                <BrandLogo compact />
+                            </Link>
+                        ) : null}
                         <div className="min-w-0">
                             <p className="truncate text-base font-semibold leading-tight text-slate-700 sm:text-lg">
                                 Manage your product catalog.
