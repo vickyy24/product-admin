@@ -60,7 +60,7 @@ export default function ProductTable({ products }) {
         <>
             <div className="hidden overflow-x-auto rounded-xl border bg-white shadow-sm lg:block">
                 <table className="w-full text-left">
-                    <thead className="border-b bg-slate-100 text-[11px] uppercase tracking-[0.18em] text-slate-600">
+                    <thead className="border-b border-teal-100 bg-teal-50 text-[11px] uppercase tracking-[0.18em] text-brand">
                         <tr>
                             <th className="px-5 py-4 font-bold">Product</th>
                             <th className="px-5 py-4 font-bold">Category</th>
