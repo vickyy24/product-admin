@@ -62,9 +62,13 @@ export default function LoginPage() {
         setErrorMessage('');
 
         try {
-            const { data } = await api.post('/auth/login', {
-                ...credentials,
-                expiresInMins: 30,
+            const { data } = await api({
+                url: '/auth/login',
+                method: 'POST',
+                data: {
+                    ...credentials,
+                    expiresInMins: 30,
+                },
             });
 
             localStorage.setItem('auth_token', data.accessToken);
