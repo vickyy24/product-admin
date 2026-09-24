@@ -169,20 +169,20 @@ function ProductsView() {
     return (
         <AppShell>
             <main className="mx-auto w-[92%] max-w-7xl py-8 md:py-10">
-                <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-center">
+                <div className="flex flex-col items-stretch gap-5 sm:flex-row sm:items-center sm:justify-between">
                     <div>
                         <h1 className="text-3xl font-bold text-slate-900">Products</h1>
                         <p className="mt-1 text-sm text-slate-500">Manage your product catalog.</p>
                     </div>
                     <Link
-                        className="rounded-xl bg-brand px-4 py-2.5 text-center text-sm font-semibold text-white shadow-sm transition duration-200 hover:bg-[#0b5d57] hover:shadow-md"
+                        className="w-full rounded-xl bg-brand px-4 py-2.5 text-center text-sm font-semibold text-white shadow-sm transition duration-200 hover:bg-[#0b5d57] hover:shadow-md sm:w-auto"
                         href="/products/new"
                     >
                         Add product
                     </Link>
                 </div>
 
-                <div className="mt-7 grid gap-3 md:grid-cols-[2fr_1fr_1fr_1fr]">
+                <div className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr]">
                     <input
                         className="rounded-lg border bg-white px-3 py-2.5 outline-none focus:border-brand focus:ring-2 focus:ring-indigo-100"
                         value={searchInput}
