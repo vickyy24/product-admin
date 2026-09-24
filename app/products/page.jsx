@@ -175,22 +175,32 @@ function ProductsView() {
                         <p className="mt-1 text-sm text-slate-500">Manage your product catalog.</p>
                     </div>
                     <Link
-                        className="w-full rounded-xl bg-brand px-4 py-2.5 text-center text-sm font-semibold text-white shadow-sm transition duration-200 hover:bg-[#0b5d57] hover:shadow-md sm:w-auto"
+                        className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-brand px-4 py-2.5 text-center text-sm font-semibold text-white shadow-sm transition duration-200 hover:bg-[#0b5d57] hover:shadow-md sm:w-auto"
                         href="/products/new"
                     >
+                        <svg
+                            className="h-4 w-4"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            aria-hidden="true"
+                        >
+                            <path d="M12 5v14M5 12h14" />
+                        </svg>
                         Add product
                     </Link>
                 </div>
 
-                <div className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr]">
+                <div className="mt-7 grid grid-cols-1 gap-2.5 rounded-xl border border-slate-200 bg-white p-3 shadow-sm sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr]">
                     <input
-                        className="rounded-lg border bg-white px-3 py-2.5 outline-none focus:border-brand focus:ring-2 focus:ring-indigo-100"
+                        className="min-w-0 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm outline-none transition focus:border-brand focus:bg-white focus:ring-2 focus:ring-teal-100"
                         value={searchInput}
                         onChange={handleSearchChange}
                         placeholder="Search products..."
                     />
                     <select
-                        className="rounded-lg border bg-white px-3 py-2.5 outline-none focus:border-brand"
+                        className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm outline-none transition focus:border-brand focus:bg-white focus:ring-2 focus:ring-teal-100"
                         value={selectedCategory}
                         onChange={handleCategoryChange}
                     >
@@ -202,7 +212,7 @@ function ProductsView() {
                         ))}
                     </select>
                     <select
-                        className="rounded-lg border bg-white px-3 py-2.5 outline-none focus:border-brand"
+                        className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm outline-none transition focus:border-brand focus:bg-white focus:ring-2 focus:ring-teal-100"
                         value={selectedSort}
                         onChange={handleSortChange}
                     >
