@@ -7,7 +7,7 @@ import BrandLogo from './BrandLogo';
 export default function Sidebar({ isOpen, pathname, onToggle, onClose, onLogout }) {
     return (
         <aside
-            className={`fixed inset-y-0 left-0 z-50 overflow-hidden border-r border-slate-200 bg-white transition-[width,transform] duration-200 lg:z-30 ${
+            className={`fixed inset-y-0 left-0 z-50 overflow-hidden border-r border-teal-100 bg-teal-50 transition-[width,transform] duration-200 lg:z-30 ${
                 isOpen ? 'w-56 translate-x-0 lg:w-64' : 'w-20 -translate-x-full lg:translate-x-0'
             }`}
         >
