@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { api } from '../lib/api';
+import BrandLogo from '../components/BrandLogo';
 
 export default function LoginPage() {
     const router = useRouter();
@@ -80,12 +81,10 @@ export default function LoginPage() {
         <main className="flex min-h-screen items-center justify-center bg-slate-100 px-4 py-12">
             <section className="w-full max-w-md rounded-2xl border bg-white p-8 shadow-sm">
                 <div className="mb-8">
-                    <p className="text-sm font-bold uppercase tracking-[0.2em] text-brand">
-                        Product Admin
-                    </p>
+                    <BrandLogo />
                     <h1 className="mt-3 text-3xl font-bold text-slate-900">Welcome back</h1>
                     <p className="mt-2 text-sm text-slate-500">
-                        Sign in to manage your product catalog.
+                        Sign in to manage the Nexgensis product catalog.
                     </p>
                 </div>
 
@@ -132,7 +131,7 @@ export default function LoginPage() {
                     </label>
 
                     <button
-                        className="w-full rounded-lg bg-brand px-4 py-3 font-semibold text-white transition hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-60"
+                        className="w-full rounded-xl bg-brand px-4 py-3 font-semibold text-white shadow-sm transition duration-200 hover:bg-[#0b5d57] hover:shadow-md disabled:cursor-not-allowed disabled:opacity-60"
                         type="submit"
                         disabled={isSubmitting}
                     >
