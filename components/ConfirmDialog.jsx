@@ -1,5 +1,7 @@
 'use client';
 
+import { FiX } from 'react-icons/fi';
+
 export default function ConfirmDialog({ title, description, onCancel, onConfirm, isConfirming }) {
     return (
         <div
@@ -20,16 +22,7 @@ export default function ConfirmDialog({ title, description, onCancel, onConfirm,
                     type="button"
                     aria-label="Close delete confirmation"
                 >
-                    <svg
-                        className="h-5 w-5 transition-transform duration-200 group-hover:rotate-90"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        aria-hidden="true"
-                    >
-                        <path d="m7 7 10 10M17 7 7 17" />
-                    </svg>
+                    <FiX className="h-5 w-5 transition-transform duration-200 group-hover:rotate-90" aria-hidden="true" />
                 </button>
 
                 <div className="flex justify-center">

@@ -11,6 +11,7 @@ import ProductTable from '../../components/ProductTable';
 import StatusMessage from '../../components/StatusMessage';
 import { isAuthenticated } from '../../lib/auth';
 import { getCategories, getProducts } from '../../lib/products';
+import { FiPlus, FiSearch } from 'react-icons/fi';
 
 const pageSizes = [10, 20, 50];
 
@@ -178,25 +179,13 @@ function ProductsView() {
                                 className="inline-flex shrink-0 items-center justify-center gap-1.5 rounded-xl bg-brand px-3 py-2 text-xs font-semibold text-white shadow-[0_8px_18px_rgba(15,118,110,0.28)] transition hover:bg-[#0b5d57] lg:hidden"
                                 href="/products/new"
                             >
-                                <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                                    <path d="M12 5v14M5 12h14" />
-                                </svg>
+                                <FiPlus className="h-3.5 w-3.5" aria-hidden="true" />
                                 Add product
                             </Link>
                         </div>
                         <div className="grid min-w-0 flex-1 grid-cols-1 gap-3 sm:grid-cols-2 lg:ml-auto lg:flex-none lg:grid-cols-[minmax(220px,320px)_150px_150px_auto]">
                         <div className="relative">
-                            <svg
-                                className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                aria-hidden="true"
-                            >
-                                <circle cx="11" cy="11" r="6.5" />
-                                <path d="m16 16 4 4" />
-                            </svg>
+                            <FiSearch className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" aria-hidden="true" />
                             <input
                                 className="h-10 w-full min-w-0 rounded-lg border border-slate-200 bg-slate-50 py-2 pl-9 pr-3 text-sm outline-none transition focus:border-brand focus:bg-white focus:ring-2 focus:ring-teal-100"
                                 id="product-search"
@@ -236,9 +225,7 @@ function ProductsView() {
                             className="hidden items-center justify-center gap-1.5 rounded-xl bg-brand px-3 py-2 text-xs font-semibold text-white shadow-[0_8px_18px_rgba(15,118,110,0.28)] transition hover:bg-[#0b5d57] lg:inline-flex"
                             href="/products/new"
                         >
-                            <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                                <path d="M12 5v14M5 12h14" />
-                            </svg>
+                            <FiPlus className="h-3.5 w-3.5" aria-hidden="true" />
                             Add product
                         </Link>
                         </div>

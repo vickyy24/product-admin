@@ -1,27 +1,8 @@
 'use client';
 
 import Link from 'next/link';
+import { FiChevronLeft, FiChevronRight, FiGrid, FiLogOut, FiX } from 'react-icons/fi';
 import BrandLogo from './BrandLogo';
-
-function ProductsIcon() {
-    return (
-        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-            <rect x="4" y="4" width="6" height="6" rx="1" />
-            <rect x="14" y="4" width="6" height="6" rx="1" />
-            <rect x="4" y="14" width="6" height="6" rx="1" />
-            <rect x="14" y="14" width="6" height="6" rx="1" />
-        </svg>
-    );
-}
-
-function LogoutIcon() {
-    return (
-        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-            <path d="M10 5H6.5A1.5 1.5 0 0 0 5 6.5v11A1.5 1.5 0 0 0 6.5 19H10" />
-            <path d="M14 8l4 4-4 4M18 12H9" />
-        </svg>
-    );
-}
 
 export default function Sidebar({ isOpen, pathname, onToggle, onClose, onLogout }) {
     return (
@@ -42,12 +23,10 @@ export default function Sidebar({ isOpen, pathname, onToggle, onClose, onLogout 
                         aria-label={isOpen ? 'Collapse sidebar' : 'Expand sidebar'}
                         aria-expanded={isOpen}
                     >
-                        <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                            {isOpen ? <><path d="m14 7-5 5 5 5" /><path d="m19 7-5 5 5 5" /></> : <><path d="m10 7 5 5-5 5" /><path d="m5 7 5 5-5 5" /></>}
-                        </svg>
+                        {isOpen ? <FiChevronLeft className="h-5 w-5" aria-hidden="true" /> : <FiChevronRight className="h-5 w-5" aria-hidden="true" />}
                     </button>
                     <button className="ml-auto rounded-lg p-2 text-slate-400 transition hover:bg-slate-100 hover:text-slate-700 lg:hidden" onClick={onClose} type="button" aria-label="Close sidebar">
-                        <span className="text-xl leading-none">×</span>
+                        <FiX className="h-5 w-5" aria-hidden="true" />
                     </button>
                 </div>
                 <nav className={`flex-1 space-y-1 ${isOpen ? 'p-4' : 'p-2'}`}>
@@ -56,13 +35,13 @@ export default function Sidebar({ isOpen, pathname, onToggle, onClose, onLogout 
                         className={`flex items-center rounded-lg py-2.5 text-sm font-semibold transition ${isOpen ? 'gap-3 px-3' : 'justify-center px-2'} ${pathname.startsWith('/products') ? 'bg-brand text-white shadow-[0_6px_14px_rgba(15,118,110,0.24)] hover:bg-[#0b5d57]' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'}`}
                         href="/products"
                     >
-                        <ProductsIcon />
+                        <FiGrid className="h-5 w-5" aria-hidden="true" />
                         <span className={isOpen ? '' : 'lg:hidden'}>Products</span>
                     </Link>
                 </nav>
                 <div className={`border-t border-slate-200 ${isOpen ? 'p-4' : 'p-2'}`}>
                     <button className={`flex w-full items-center rounded-lg border border-red-200 bg-red-50 py-2.5 text-left text-sm font-semibold text-red-700 transition hover:border-red-300 hover:bg-red-100 ${isOpen ? 'gap-3 px-3' : 'justify-center px-2'}`} onClick={onLogout} type="button">
-                        <LogoutIcon />
+                        <FiLogOut className="h-5 w-5" aria-hidden="true" />
                         <span className={isOpen ? '' : 'lg:hidden'}>Log out</span>
                     </button>
                 </div>
