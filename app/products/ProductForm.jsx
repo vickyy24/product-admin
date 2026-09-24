@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { isAuthenticated } from '../../lib/auth';
@@ -251,10 +252,13 @@ export default function ProductForm() {
                             Upload an image file up to 2 MB.
                         </span>
                         {form.image ? (
-                            <img
+                            <Image
                                 className="mt-3 h-32 w-32 rounded-lg border object-cover"
                                 src={form.image}
                                 alt="Selected product preview"
+                                width={128}
+                                height={128}
+                                unoptimized
                             />
                         ) : null}
                     </label>
