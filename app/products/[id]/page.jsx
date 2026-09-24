@@ -10,6 +10,7 @@ import Loader from '../../../components/Loader';
 import StatusMessage from '../../../components/StatusMessage';
 import { isAuthenticated } from '../../../lib/auth';
 import { getProduct, removeProduct } from '../../../lib/products';
+import Button from '../../../components/Button';
 
 export default function ProductDetailsPage() {
     const { id } = useParams();
@@ -79,13 +80,12 @@ export default function ProductDetailsPage() {
                         description={errorMessage}
                         action={
                     <div className="flex justify-center gap-3">
-                        <button
-                            className="rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-white"
+                        <Button
+                            className="px-4 py-2"
                             onClick={loadProduct}
-                            type="button"
                         >
                             Retry
-                        </button>
+                        </Button>
                         <Link
                             className="inline-flex rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-600"
                             href="/products"

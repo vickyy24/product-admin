@@ -1,6 +1,7 @@
 'use client';
 
 import { FiX } from 'react-icons/fi';
+import Button from './Button';
 
 export default function ConfirmDialog({ title, description, onCancel, onConfirm, isConfirming }) {
     return (
@@ -37,21 +38,19 @@ export default function ConfirmDialog({ title, description, onCancel, onConfirm,
                 <p className="mt-3 text-center text-sm leading-6 text-slate-500">{description}</p>
 
                 <div className="mt-6 flex justify-end gap-3">
-                    <button
-                        className="rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-600 shadow-sm transition duration-200 hover:bg-slate-100 hover:text-slate-900 hover:border-slate-300"
+                    <Button
+                        variant="secondary"
                         onClick={onCancel}
-                        type="button"
                     >
                         Cancel
-                    </button>
-                    <button
-                        className="rounded-lg bg-red-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition duration-200 hover:bg-red-700 hover:shadow-md disabled:cursor-not-allowed disabled:opacity-60"
+                    </Button>
+                    <Button
+                        variant="danger"
                         onClick={onConfirm}
-                        type="button"
                         disabled={isConfirming}
                     >
                         {isConfirming ? 'Deleting...' : 'Delete product'}
-                    </button>
+                    </Button>
                 </div>
             </div>
         </div>

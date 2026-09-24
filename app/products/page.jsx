@@ -12,6 +12,7 @@ import StatusMessage from '../../components/StatusMessage';
 import { isAuthenticated } from '../../lib/auth';
 import { getCategories, getProducts } from '../../lib/products';
 import { FiPlus, FiSearch } from 'react-icons/fi';
+import Button from '../../components/Button';
 
 const pageSizes = [10, 20, 50];
 
@@ -240,13 +241,12 @@ function ProductsView() {
                             title="Something went wrong"
                             description={errorMessage}
                             action={
-                                <button
-                                    className="rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-white"
+                                <Button
+                                    className="px-4 py-2"
                                     onClick={handleRetry}
-                                    type="button"
                                 >
                                     Retry
-                                </button>
+                                </Button>
                             }
                         />
                     ) : visibleProducts.length === 0 ? (

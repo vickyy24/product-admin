@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { isAuthenticated } from '../../lib/auth';
 import { getProduct, saveProduct } from '../../lib/products';
 import DashboardLayout from '../../components/DashboardLayout';
+import Button from '../../components/Button';
 
 const emptyForm = {
     title: '',
@@ -335,13 +336,12 @@ export default function ProductForm() {
                     >
                         Cancel
                     </Link>
-                    <button
-                        className="rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition duration-200 hover:bg-[#0b5d57] hover:shadow-md disabled:cursor-not-allowed disabled:opacity-60"
+                    <Button
                         type="submit"
                         disabled={isSaving}
                     >
                         {isSaving ? 'Saving...' : 'Save product'}
-                    </button>
+                    </Button>
                 </div>
             </form>
             </main>
