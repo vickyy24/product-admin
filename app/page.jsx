@@ -95,10 +95,14 @@ export default function LoginPage() {
                 ) : null}
 
                 <form className="space-y-5" onSubmit={handleSubmit}>
-                    <label className="block text-sm font-semibold text-slate-700">
+                    <label
+                        className="block text-sm font-semibold text-slate-700"
+                        htmlFor="username"
+                    >
                         Username
                         <input
                             className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm font-normal text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-brand focus:ring-2 focus:ring-teal-100"
+                            id="username"
                             name="username"
                             value={credentials.username}
                             onChange={handleInputChange}
@@ -112,10 +116,14 @@ export default function LoginPage() {
                         ) : null}
                     </label>
 
-                    <label className="block text-sm font-semibold text-slate-700">
+                    <label
+                        className="block text-sm font-semibold text-slate-700"
+                        htmlFor="password"
+                    >
                         Password
                         <input
                             className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm font-normal text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-brand focus:ring-2 focus:ring-teal-100"
+                            id="password"
                             name="password"
                             type="password"
                             value={credentials.password}

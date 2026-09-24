@@ -184,10 +184,11 @@ export default function ProductForm() {
                 ) : null}
 
                 <div className="grid gap-5 md:grid-cols-2">
-                    <label className="text-sm font-semibold text-slate-700">
+                    <label className="text-sm font-semibold text-slate-700" htmlFor="title">
                         Title
                         <input
                             className="product-form-input"
+                            id="title"
                             name="title"
                             value={form.title}
                             onChange={handleInputChange}
@@ -195,20 +196,22 @@ export default function ProductForm() {
                         />
                     </label>
 
-                    <label className="text-sm font-semibold text-slate-700">
+                    <label className="text-sm font-semibold text-slate-700" htmlFor="category">
                         Category
                         <input
                             className="product-form-input"
+                            id="category"
                             name="category"
                             value={form.category}
                             onChange={handleInputChange}
                         />
                     </label>
 
-                    <label className="text-sm font-semibold text-slate-700">
+                    <label className="text-sm font-semibold text-slate-700" htmlFor="price">
                         Price
                         <input
                             className="product-form-input"
+                            id="price"
                             name="price"
                             type="number"
                             min="0"
@@ -219,10 +222,11 @@ export default function ProductForm() {
                         />
                     </label>
 
-                    <label className="text-sm font-semibold text-slate-700">
+                    <label className="text-sm font-semibold text-slate-700" htmlFor="stock">
                         Stock
                         <input
                             className="product-form-input"
+                            id="stock"
                             name="stock"
                             type="number"
                             min="0"
@@ -232,20 +236,28 @@ export default function ProductForm() {
                         />
                     </label>
 
-                    <label className="text-sm font-semibold text-slate-700 md:col-span-2">
+                    <label
+                        className="text-sm font-semibold text-slate-700 md:col-span-2"
+                        htmlFor="description"
+                    >
                         Description
                         <textarea
                             className="product-form-input product-form-textarea"
+                            id="description"
                             name="description"
                             value={form.description}
                             onChange={handleInputChange}
                         />
                     </label>
 
-                    <label className="text-sm font-semibold text-slate-700 md:col-span-2">
+                    <label
+                        className="text-sm font-semibold text-slate-700 md:col-span-2"
+                        htmlFor="product-image"
+                    >
                         Product image
                         <input
                             className="mt-2 w-full rounded-lg border bg-white px-3 py-2.5 text-sm outline-none file:mr-4 file:rounded-md file:border-0 file:bg-indigo-50 file:px-3 file:py-2 file:font-semibold file:text-indigo-700 focus:border-brand focus:ring-2 focus:ring-indigo-100"
+                            id="product-image"
                             type="file"
                             accept="image/*"
                             onChange={handleImageChange}

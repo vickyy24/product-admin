@@ -198,15 +198,19 @@ function ProductsView() {
                             </svg>
                             <input
                                 className="h-10 w-full min-w-0 rounded-lg border border-slate-200 bg-slate-50 py-2 pl-9 pr-3 text-sm outline-none transition focus:border-brand focus:bg-white focus:ring-2 focus:ring-teal-100"
+                                id="product-search"
                                 value={searchInput}
                                 onChange={handleSearchChange}
                                 placeholder="Search products..."
+                                aria-label="Search products"
                             />
                         </div>
                         <select
                             className="product-filter-control"
+                            id="product-category"
                             value={selectedCategory}
                             onChange={handleCategoryChange}
+                            aria-label="Filter by category"
                         >
                             <option value="">All categories</option>
                             {categories.map((category) => (
@@ -217,8 +221,10 @@ function ProductsView() {
                         </select>
                         <select
                             className="product-filter-control"
+                            id="product-sort"
                             value={selectedSort}
                             onChange={handleSortChange}
+                            aria-label="Sort products"
                         >
                             <option value="">Sort by</option>
                             <option value="price">Price</option>

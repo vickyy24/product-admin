@@ -17,10 +17,14 @@ export default function Pagination({
                 <p className="text-sm text-slate-500">
                     Showing {start}-{end} of {total}
                 </p>
-                <label className="flex items-center gap-2 text-sm text-slate-500">
+                <label
+                    className="flex items-center gap-2 text-sm text-slate-500"
+                    htmlFor="page-size"
+                >
                     <span>Rows</span>
                     <select
                         className="rounded-lg border bg-white px-3 py-2 text-sm text-slate-700 outline-none focus:border-brand"
+                        id="page-size"
                         value={pageSize}
                         onChange={onPageSizeChange}
                     >
