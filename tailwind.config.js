@@ -7,7 +7,7 @@ module.exports = {
                 ink: '#182230',
                 muted: '#64748b',
                 line: '#e2e8f0',
-                brand: '#4f46e5',
+                brand: '#0f766e',
             },
         },
     },
