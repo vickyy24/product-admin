@@ -30,6 +30,7 @@ function ProductsView() {
     const [categories, setCategories] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [errorMessage, setErrorMessage] = useState('');
+    const [isAuthReady, setIsAuthReady] = useState(false);
 
     const updateSearchParams = useCallback(
         (key, value) => {
@@ -80,7 +81,10 @@ function ProductsView() {
     useEffect(() => {
         if (!isAuthenticated()) {
             router.replace('/');
+            return;
         }
+
+        setIsAuthReady(true);
     }, [router]);
 
     useEffect(() => {
@@ -154,7 +158,7 @@ function ProductsView() {
         }
     }, [page, productsResponse, totalPages, updateSearchParams]);
 
-    if (!isAuthenticated()) {
+    if (!isAuthReady) {
         return null;
     }
 
