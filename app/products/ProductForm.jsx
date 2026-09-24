@@ -185,7 +185,7 @@ export default function ProductForm() {
                     <label className="text-sm font-semibold text-slate-700">
                         Title
                         <input
-                            className="mt-2 w-full rounded-lg border px-3 py-2.5 outline-none focus:border-brand focus:ring-2 focus:ring-indigo-100"
+                            className="product-form-input"
                             name="title"
                             value={form.title}
                             onChange={handleInputChange}
@@ -196,7 +196,7 @@ export default function ProductForm() {
                     <label className="text-sm font-semibold text-slate-700">
                         Category
                         <input
-                            className="mt-2 w-full rounded-lg border px-3 py-2.5 outline-none focus:border-brand focus:ring-2 focus:ring-indigo-100"
+                            className="product-form-input"
                             name="category"
                             value={form.category}
                             onChange={handleInputChange}
@@ -206,7 +206,7 @@ export default function ProductForm() {
                     <label className="text-sm font-semibold text-slate-700">
                         Price
                         <input
-                            className="mt-2 w-full rounded-lg border px-3 py-2.5 outline-none focus:border-brand focus:ring-2 focus:ring-indigo-100"
+                            className="product-form-input"
                             name="price"
                             type="number"
                             min="0"
@@ -220,7 +220,7 @@ export default function ProductForm() {
                     <label className="text-sm font-semibold text-slate-700">
                         Stock
                         <input
-                            className="mt-2 w-full rounded-lg border px-3 py-2.5 outline-none focus:border-brand focus:ring-2 focus:ring-indigo-100"
+                            className="product-form-input"
                             name="stock"
                             type="number"
                             min="0"
@@ -233,7 +233,7 @@ export default function ProductForm() {
                     <label className="text-sm font-semibold text-slate-700 md:col-span-2">
                         Description
                         <textarea
-                            className="mt-2 min-h-32 w-full rounded-lg border px-3 py-2.5 outline-none focus:border-brand focus:ring-2 focus:ring-indigo-100"
+                            className="product-form-input product-form-textarea"
                             name="description"
                             value={form.description}
                             onChange={handleInputChange}
