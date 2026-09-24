@@ -153,15 +153,15 @@ export default function ProductForm() {
     }
 
     return (
-        <main className="mx-auto w-[92%] max-w-3xl py-8 md:py-10">
+        <main className="mx-auto w-[96%] max-w-[1600px] py-4 lg:w-full lg:max-w-none lg:px-3 lg:py-3">
             <Link
                 className="text-sm font-semibold text-slate-500 hover:text-brand"
                 href="/products"
             >
                 ← Back to products
             </Link>
-            <div className="mb-6 mt-4">
-                <h1 className="text-3xl font-bold text-slate-900">
+            <div className="mb-4 mt-2">
+                <h1 className="text-2xl font-bold text-slate-900">
                     {productId ? 'Edit product' : 'Add product'}
                 </h1>
                 <p className="mt-1 text-sm text-slate-500">
