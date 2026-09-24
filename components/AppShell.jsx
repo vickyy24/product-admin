@@ -55,7 +55,7 @@ export default function AppShell({ children }) {
     }
 
     return (
-        <div className="min-h-screen bg-slate-50">
+        <div className="min-h-screen overflow-x-hidden bg-slate-50">
             {isSidebarOpen ? (
                 <button
                     className="fixed inset-0 z-20 bg-slate-950/30 lg:hidden"
@@ -178,24 +178,26 @@ export default function AppShell({ children }) {
             <div className={isSidebarOpen ? 'lg:pl-64' : 'lg:pl-20'}>
                 <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/95 backdrop-blur">
                     <div className="mx-auto flex h-[72px] w-[92%] max-w-7xl items-center gap-4">
-                        <button
-                            className="rounded-lg border border-slate-200 bg-white p-2 text-slate-500 shadow-sm transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 lg:hidden"
-                            onClick={() => setIsSidebarOpen((current) => !current)}
-                            type="button"
-                            aria-label={isSidebarOpen ? 'Close sidebar' : 'Open sidebar'}
-                            aria-expanded={isSidebarOpen}
-                        >
-                            <svg
-                                className="h-5 w-5"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                aria-hidden="true"
+                        {!isSidebarOpen ? (
+                            <button
+                                className="rounded-lg border border-slate-200 bg-white p-2 text-slate-500 shadow-sm transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 lg:hidden"
+                                onClick={() => setIsSidebarOpen(true)}
+                                type="button"
+                                aria-label="Open sidebar"
+                                aria-expanded={isSidebarOpen}
                             >
-                                <path d="M4 6h16M4 12h16M4 18h16" />
-                            </svg>
-                        </button>
+                                <svg
+                                    className="h-5 w-5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    aria-hidden="true"
+                                >
+                                    <path d="M4 6h16M4 12h16M4 18h16" />
+                                </svg>
+                            </button>
+                        ) : null}
                         <Link
                             className="inline-flex items-center lg:hidden"
                             href="/products"
