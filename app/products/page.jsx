@@ -168,7 +168,7 @@ function ProductsView() {
 
     return (
         <AppShell>
-            <main className="mx-auto w-[92%] max-w-7xl py-8 md:py-10">
+            <main className="mx-auto w-[92%] max-w-7xl py-4 md:py-6">
                 <div className="mt-7 flex flex-col gap-3 lg:flex-row lg:items-center">
                     <div className="grid min-w-0 flex-1 grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr]">
                     <input
