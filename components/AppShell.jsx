@@ -204,7 +204,7 @@ export default function AppShell({ children }) {
                         ) : null}
                         {!isSidebarOpen ? (
                             <Link
-                                className="ml-auto inline-flex items-center lg:hidden"
+                                className="inline-flex items-center lg:hidden"
                                 href="/products"
                             >
                                 <BrandLogo compact />
