@@ -266,13 +266,13 @@ export default function ProductForm() {
 
                 <div className="mt-8 flex justify-end gap-3">
                     <Link
-                        className="rounded-lg px-4 py-2.5 text-sm font-semibold text-slate-600 hover:bg-slate-100"
+                        className="rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-600 shadow-sm transition duration-200 hover:border-slate-300 hover:bg-slate-100 hover:text-slate-900"
                         href="/products"
                     >
                         Cancel
                     </Link>
                     <button
-                        className="rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-white hover:bg-indigo-700 disabled:cursor-not-allowed disabled:opacity-60"
+                        className="rounded-lg bg-brand px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition duration-200 hover:bg-[#0b5d57] hover:shadow-md disabled:cursor-not-allowed disabled:opacity-60"
                         type="submit"
                         disabled={isSaving}
                     >
