@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Suspense, useEffect, useMemo, useRef, useState } from 'react';
+import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import AppShell from '../../components/AppShell';
 import Pagination from '../../components/Pagination';
@@ -31,21 +31,24 @@ function ProductsView() {
     const [isLoading, setIsLoading] = useState(true);
     const [errorMessage, setErrorMessage] = useState('');
 
-    function updateSearchParams(key, value) {
-        const nextParams = new URLSearchParams(searchParams.toString());
+    const updateSearchParams = useCallback(
+        (key, value) => {
+            const nextParams = new URLSearchParams(searchParams.toString());
 
-        if (value) {
-            nextParams.set(key, value);
-        } else {
-            nextParams.delete(key);
-        }
+            if (value) {
+                nextParams.set(key, value);
+            } else {
+                nextParams.delete(key);
+            }
 
-        if (key !== 'page') {
-            nextParams.set('page', '1');
-        }
+            if (key !== 'page') {
+                nextParams.set('page', '1');
+            }
 
-        router.push(`${pathname}?${nextParams.toString()}`);
-    }
+            router.push(`${pathname}?${nextParams.toString()}`);
+        },
+        [pathname, router, searchParams]
+    );
 
     function handleSearchChange(event) {
         setSearchInput(event.target.value);
@@ -86,7 +89,7 @@ function ProductsView() {
         }, 350);
 
         return () => window.clearTimeout(timeoutId);
-    }, [searchInput]);
+    }, [searchInput, updateSearchParams]);
 
     useEffect(() => {
         let isMounted = true;
@@ -116,7 +119,7 @@ function ProductsView() {
             limit: pageSize,
             skip: (page - 1) * pageSize,
             search: searchQuery,
-            sort: selectedSort
+            sort: selectedSort,
         })
             .then((result) => {
                 if (currentRequestId === requestId.current) {
@@ -154,9 +157,7 @@ function ProductsView() {
                 <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-center">
                     <div>
                         <h1 className="text-3xl font-bold text-slate-900">Products</h1>
-                        <p className="mt-1 text-sm text-slate-500">
-                            Manage your product catalog.
-                        </p>
+                        <p className="mt-1 text-sm text-slate-500">Manage your product catalog.</p>
                     </div>
                     <Link
                         className="rounded-lg bg-brand px-4 py-2.5 text-center text-sm font-semibold text-white transition hover:bg-indigo-700"

@@ -1,0 +1,168 @@
+'use client';
+
+import Link from 'next/link';
+import Image from 'next/image';
+import { useParams, useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import AppShell from '../../../components/AppShell';
+import StatusMessage from '../../../components/StatusMessage';
+import { isAuthenticated } from '../../../lib/auth';
+import { getProduct, removeProduct } from '../../../lib/products';
+
+export default function ProductDetailsPage() {
+    const { id } = useParams();
+    const router = useRouter();
+    const [product, setProduct] = useState(null);
+    const [errorMessage, setErrorMessage] = useState('');
+    const [isDeleting, setIsDeleting] = useState(false);
+
+    function handleDelete() {
+        if (isDeleting || !window.confirm('Delete this product?')) {
+            return;
+        }
+
+        setIsDeleting(true);
+        removeProduct(product.id)
+            .then(() => {
+                localStorage.setItem(`product_deleted_${product.id}`, 'true');
+                router.replace('/products');
+            })
+            .catch((error) => setErrorMessage(error.message))
+            .finally(() => setIsDeleting(false));
+    }
+
+    useEffect(() => {
+        if (!isAuthenticated()) {
+            router.replace('/');
+            return;
+        }
+
+        getProduct(id)
+            .then((result) => setProduct(result))
+            .catch((error) => setErrorMessage(error.message));
+    }, [id, router]);
+
+    if (!isAuthenticated()) {
+        return null;
+    }
+
+    if (errorMessage && !product) {
+        return (
+            <AppShell>
+                <main className="mx-auto w-[92%] max-w-7xl py-10">
+                    <StatusMessage
+                        title="Product not found"
+                        description={errorMessage}
+                        action={
+                            <Link
+                                className="inline-flex rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-white"
+                                href="/products"
+                            >
+                                Back to products
+                            </Link>
+                        }
+                    />
+                </main>
+            </AppShell>
+        );
+    }
+
+    if (!product) {
+        return (
+            <AppShell>
+                <main className="mx-auto w-[92%] max-w-7xl py-10">
+                    <StatusMessage title="Loading product..." />
+                </main>
+            </AppShell>
+        );
+    }
+
+    return (
+        <AppShell>
+            <main className="mx-auto w-[92%] max-w-7xl py-8 md:py-10">
+                <Link
+                    className="text-sm font-semibold text-slate-500 hover:text-brand"
+                    href="/products"
+                >
+                    ← Back to products
+                </Link>
+
+                <div className="mt-4 flex flex-col justify-between gap-5 sm:flex-row sm:items-start">
+                    <div>
+                        <h1 className="text-3xl font-bold text-slate-900">{product.title}</h1>
+                        <p className="mt-1 text-sm capitalize text-slate-500">{product.category}</p>
+                    </div>
+                    <div className="flex gap-2">
+                        <Link
+                            className="rounded-lg bg-indigo-50 px-4 py-2.5 text-sm font-semibold text-indigo-700 hover:bg-indigo-100"
+                            href={`/products/${product.id}/edit`}
+                        >
+                            Edit
+                        </Link>
+                        <button
+                            className="rounded-lg bg-red-50 px-4 py-2.5 text-sm font-semibold text-red-700 hover:bg-red-100 disabled:opacity-60"
+                            onClick={handleDelete}
+                            type="button"
+                            disabled={isDeleting}
+                        >
+                            {isDeleting ? 'Deleting...' : 'Delete'}
+                        </button>
+                    </div>
+                </div>
+
+                {errorMessage ? (
+                    <div className="mt-5 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700">
+                        {errorMessage}
+                    </div>
+                ) : null}
+
+                <div className="mt-7 grid gap-8 rounded-2xl border bg-white p-5 shadow-sm md:grid-cols-2 md:p-8">
+                    <div>
+                        <Image
+                            className="aspect-square w-full rounded-xl bg-slate-100 object-contain"
+                            src={product.images?.[0] || product.thumbnail}
+                            alt={product.title}
+                            width={640}
+                            height={640}
+                        />
+                    </div>
+
+                    <div>
+                        <p className="leading-7 text-slate-600">{product.description}</p>
+                        <p className="mt-6 text-3xl font-bold text-slate-900">${product.price}</p>
+                        <div className="mt-4 grid grid-cols-2 gap-3 text-sm text-slate-600">
+                            <p className="rounded-lg bg-slate-50 p-3">Rating: ★ {product.rating}</p>
+                            <p className="rounded-lg bg-slate-50 p-3">Stock: {product.stock}</p>
+                        </div>
+
+                        <h2 className="mt-8 text-xl font-bold text-slate-900">Reviews</h2>
+                        <div className="mt-3 divide-y">
+                            {product.reviews?.length ? (
+                                product.reviews.map((review) => (
+                                    <article
+                                        className="py-4"
+                                        key={`${review.reviewerName}-${review.date}`}
+                                    >
+                                        <div className="flex justify-between gap-4">
+                                            <p className="font-semibold text-slate-900">
+                                                {review.reviewerName}
+                                            </p>
+                                            <p className="text-sm text-slate-500">
+                                                ★ {review.rating}
+                                            </p>
+                                        </div>
+                                        <p className="mt-2 text-sm leading-6 text-slate-600">
+                                            {review.comment}
+                                        </p>
+                                    </article>
+                                ))
+                            ) : (
+                                <p className="py-4 text-sm text-slate-500">No reviews yet.</p>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </AppShell>
+    );
+}
