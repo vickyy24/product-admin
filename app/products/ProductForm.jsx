@@ -166,11 +166,11 @@ export default function ProductForm() {
                 <h1 className="text-2xl font-bold text-slate-900">
                     {productId ? 'Edit product' : 'Add product'}
                 </h1>
-                <p className="mt-1 text-sm text-slate-500">
-                    {productId
-                        ? 'Update the product information below.'
-                        : 'Add a new item to your catalog.'}
-                </p>
+                {productId ? (
+                    <p className="mt-1 text-sm text-slate-500">
+                        Update the product information below.
+                    </p>
+                ) : null}
             </div>
 
             <form
