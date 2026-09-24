@@ -79,9 +79,7 @@ export default function AppShell({ children }) {
                         }`}
                     >
                         <Link
-                            className={`inline-flex items-center ${
-                                isSidebarOpen ? '' : 'lg:hidden'
-                            }`}
+                            className="inline-flex items-center"
                             href="/products"
                         >
                             <BrandLogo />
