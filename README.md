@@ -9,7 +9,8 @@ Tailwind CSS, Axios, and plain JavaScript.
 npm install
 npm run dev
 ```
-Live : https://product-admin-tau.vercel.app/
+Live Preview of website : https://product-admin-tau.vercel.app/ 
+
 Open [http://localhost:3000](http://localhost:3000).
 
 Use the DummyJSON demo credentials:
