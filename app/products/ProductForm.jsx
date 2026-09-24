@@ -24,6 +24,7 @@ export default function ProductForm() {
     const [form, setForm] = useState(emptyForm);
     const [errorMessage, setErrorMessage] = useState('');
     const [isSaving, setIsSaving] = useState(false);
+    const [isAuthReady, setIsAuthReady] = useState(false);
 
     function handleImageChange(event) {
         const file = event.target.files?.[0];
@@ -133,6 +134,8 @@ export default function ProductForm() {
             return;
         }
 
+        setIsAuthReady(true);
+
         if (productId) {
             getProduct(productId)
                 .then((product) => {
@@ -149,7 +152,7 @@ export default function ProductForm() {
         }
     }, [productId, router]);
 
-    if (!isAuthenticated()) {
+    if (!isAuthReady || !isAuthenticated()) {
         return null;
     }
 

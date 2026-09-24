@@ -17,6 +17,7 @@ export default function ProductDetailsPage() {
     const [errorMessage, setErrorMessage] = useState('');
     const [isDeleting, setIsDeleting] = useState(false);
     const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
+    const [isAuthReady, setIsAuthReady] = useState(false);
 
     function handleDelete() {
         if (isDeleting) {
@@ -46,12 +47,14 @@ export default function ProductDetailsPage() {
             return;
         }
 
+        setIsAuthReady(true);
+
         getProduct(id)
             .then((result) => setProduct(result))
             .catch((error) => setErrorMessage(error.message));
     }, [id, router]);
 
-    if (!isAuthenticated()) {
+    if (!isAuthReady || !isAuthenticated()) {
         return null;
     }
 
