@@ -171,7 +171,7 @@ function ProductsView() {
                         <p className="mt-1 text-sm text-slate-500">Manage your product catalog.</p>
                     </div>
                     <Link
-                        className="rounded-lg bg-brand px-4 py-2.5 text-center text-sm font-semibold text-white transition hover:bg-indigo-700"
+                        className="rounded-xl bg-brand px-4 py-2.5 text-center text-sm font-semibold text-white shadow-sm transition duration-200 hover:bg-[#0b5d57] hover:shadow-md"
                         href="/products/new"
                     >
                         Add product
