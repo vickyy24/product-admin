@@ -181,10 +181,10 @@ export default function AppShell({ children }) {
                         isSidebarOpen ? 'lg:left-64' : 'lg:left-20'
                     }`}
                 >
-                    <div className="mx-auto flex h-16 w-[92%] max-w-7xl items-center gap-3">
+                    <div className="relative mx-auto flex h-16 w-[92%] max-w-7xl items-center">
                         {!isSidebarOpen ? (
                             <button
-                                className="rounded-lg border border-slate-200 bg-white p-2 text-slate-500 shadow-sm transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 lg:hidden"
+                                className="absolute left-0 rounded-lg border border-slate-200 bg-white p-2 text-slate-500 shadow-sm transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 lg:hidden"
                                 onClick={() => setIsSidebarOpen(true)}
                                 type="button"
                                 aria-label="Open sidebar"
@@ -204,7 +204,7 @@ export default function AppShell({ children }) {
                         ) : null}
                         {!isSidebarOpen ? (
                             <Link
-                                className="inline-flex shrink-0 items-center lg:hidden"
+                                className="absolute left-12 inline-flex items-center lg:hidden"
                                 href="/products"
                             >
                                 <BrandLogo compact />
