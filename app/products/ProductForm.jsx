@@ -12,6 +12,7 @@ const emptyForm = {
     price: '',
     stock: '',
     description: '',
+    image: '',
 };
 
 export default function ProductForm() {
@@ -21,6 +22,35 @@ export default function ProductForm() {
     const [form, setForm] = useState(emptyForm);
     const [errorMessage, setErrorMessage] = useState('');
     const [isSaving, setIsSaving] = useState(false);
+
+    function handleImageChange(event) {
+        const file = event.target.files?.[0];
+
+        if (!file) {
+            return;
+        }
+
+        if (!file.type.startsWith('image/')) {
+            setErrorMessage('Please select a valid image file.');
+            return;
+        }
+
+        if (file.size > 2 * 1024 * 1024) {
+            setErrorMessage('Image size must be 2 MB or smaller.');
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = () => {
+            setForm((currentForm) => ({
+                ...currentForm,
+                image: reader.result,
+            }));
+            setErrorMessage('');
+        };
+        reader.onerror = () => setErrorMessage('The image could not be read.');
+        reader.readAsDataURL(file);
+    }
 
     function handleInputChange(event) {
         const { name, value } = event.target;
@@ -59,27 +89,35 @@ export default function ProductForm() {
         setErrorMessage('');
 
         try {
+            const { image, ...productFields } = form;
             const savedProduct = await saveProduct(
                 {
-                    ...form,
+                    ...productFields,
                     price: Number(form.price),
                     stock: Number(form.stock),
                 },
                 productId
             );
+            const productWithImage = image
+                ? {
+                      ...savedProduct,
+                      thumbnail: image,
+                      images: [image],
+                  }
+                : savedProduct;
 
             localStorage.setItem(
-                `product_override_${savedProduct.id}`,
-                JSON.stringify(savedProduct)
+                `product_override_${productWithImage.id}`,
+                JSON.stringify(productWithImage)
             );
 
             if (!productId) {
                 localStorage.setItem(
-                    `product_created_${savedProduct.id}`,
-                    JSON.stringify(savedProduct)
+                    `product_created_${productWithImage.id}`,
+                    JSON.stringify(productWithImage)
                 );
             }
-            router.replace(`/products/${savedProduct.id}`);
+            router.replace(`/products/${productWithImage.id}`);
         } catch (error) {
             setErrorMessage(error.message);
         } finally {
@@ -102,6 +140,7 @@ export default function ProductForm() {
                         price: product.price ?? '',
                         stock: product.stock ?? '',
                         description: product.description || '',
+                        image: product.thumbnail || '',
                     });
                 })
                 .catch((error) => setErrorMessage(error.message));
@@ -198,6 +237,26 @@ export default function ProductForm() {
                             value={form.description}
                             onChange={handleInputChange}
                         />
+                    </label>
+
+                    <label className="text-sm font-semibold text-slate-700 md:col-span-2">
+                        Product image
+                        <input
+                            className="mt-2 w-full rounded-lg border bg-white px-3 py-2.5 text-sm outline-none file:mr-4 file:rounded-md file:border-0 file:bg-indigo-50 file:px-3 file:py-2 file:font-semibold file:text-indigo-700 focus:border-brand focus:ring-2 focus:ring-indigo-100"
+                            type="file"
+                            accept="image/*"
+                            onChange={handleImageChange}
+                        />
+                        <span className="mt-1 text-xs font-normal text-slate-500">
+                            Upload an image file up to 2 MB.
+                        </span>
+                        {form.image ? (
+                            <img
+                                className="mt-3 h-32 w-32 rounded-lg border object-cover"
+                                src={form.image}
+                                alt="Selected product preview"
+                            />
+                        ) : null}
                     </label>
                 </div>
 
