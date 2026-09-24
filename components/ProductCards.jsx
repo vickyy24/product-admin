@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function ProductCards({ products }) {
     return (
-        <div className="grid gap-3 md:hidden">
+        <div className="grid gap-3 lg:hidden">
             {products.map((product) => (
                 <article
                     className="flex items-center gap-3 rounded-xl border bg-white p-4 shadow-sm"
