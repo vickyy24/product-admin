@@ -189,9 +189,9 @@ function ProductsView() {
                 </div>
 
                 <div className="mt-4 lg:rounded-t-xl lg:border lg:border-b-0 lg:border-slate-200 lg:bg-white lg:p-4 lg:pb-3">
-                    <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
+                    <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:gap-6">
                         <h2 className="shrink-0 text-lg font-bold text-slate-900">Product catalogue</h2>
-                        <div className="grid min-w-0 flex-1 grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr]">
+                        <div className="grid min-w-0 flex-1 grid-cols-1 gap-3 sm:grid-cols-2 lg:flex-none lg:grid-cols-[minmax(240px,360px)_170px_170px]">
                         <div className="relative">
                             <svg
                                 className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
