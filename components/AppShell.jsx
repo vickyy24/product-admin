@@ -183,8 +183,16 @@ export default function AppShell({ children }) {
                 >
                     <div className="mx-auto flex h-16 w-[92%] max-w-7xl items-center gap-4">
                         {!isSidebarOpen ? (
+                            <Link
+                                className="inline-flex items-center lg:hidden"
+                                href="/products"
+                            >
+                                <BrandLogo compact />
+                            </Link>
+                        ) : null}
+                        {!isSidebarOpen ? (
                             <button
-                                className="rounded-lg border border-slate-200 bg-white p-2 text-slate-500 shadow-sm transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 lg:hidden"
+                                className="ml-auto rounded-lg border border-slate-200 bg-white p-2 text-slate-500 shadow-sm transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 lg:hidden"
                                 onClick={() => setIsSidebarOpen(true)}
                                 type="button"
                                 aria-label="Open sidebar"
@@ -201,14 +209,6 @@ export default function AppShell({ children }) {
                                     <path d="M4 6h16M4 12h16M4 18h16" />
                                 </svg>
                             </button>
-                        ) : null}
-                        {!isSidebarOpen ? (
-                            <Link
-                                className="inline-flex items-center lg:hidden"
-                                href="/products"
-                            >
-                                <BrandLogo compact />
-                            </Link>
                         ) : null}
                         <div className="min-w-0">
                             <p className="hidden truncate text-base font-semibold leading-tight text-slate-700 sm:block sm:text-lg">
