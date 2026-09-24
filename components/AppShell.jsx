@@ -177,7 +177,7 @@ export default function AppShell({ children }) {
 
             <div className={`pt-16 ${isSidebarOpen ? 'lg:pl-64' : 'lg:pl-20'}`}>
                 <header
-                    className={`fixed right-0 top-0 z-40 h-16 border-b border-slate-200 bg-white ${
+                    className={`fixed left-0 right-0 top-0 z-40 h-16 border-b border-slate-200 bg-white ${
                         isSidebarOpen ? 'lg:left-64' : 'lg:left-20'
                     }`}
                 >
