@@ -205,13 +205,8 @@ export default function ProductForm() {
             </Link>
             <div className="mb-4 mt-2">
                 <h1 className="text-2xl font-bold text-slate-900">
-                    {productId ? 'Edit product' : 'Add product'}
+                    {productId ? 'Update the product information' : 'Add product'}
                 </h1>
-                {productId ? (
-                    <p className="mt-1 text-sm text-slate-500">
-                        Update the product information below.
-                    </p>
-                ) : null}
             </div>
 
             <form
