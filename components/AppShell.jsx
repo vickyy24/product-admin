@@ -209,10 +209,10 @@ export default function AppShell({ children }) {
                             </svg>
                         </button>
                         <p className="absolute left-12 truncate text-sm font-semibold text-slate-700 lg:hidden">
-                            Product Admin Dashboard
+                            Manage your product catalog.
                         </p>
                         <p className="hidden truncate text-base font-semibold leading-tight text-slate-700 lg:block lg:text-lg">
-                            Manage your product catalog.
+                            Product Admin Dashboard
                         </p>
                     </div>
                 </header>
