@@ -1,11 +1,14 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 function ProductImage({ product }) {
     return (
-        <img
+        <Image
             className="h-12 w-12 rounded-lg bg-slate-100 object-cover"
             src={product.thumbnail}
             alt=""
+            width={48}
+            height={48}
         />
     );
 }

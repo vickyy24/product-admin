@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function ProductCards({ products }) {
     return (
@@ -8,10 +9,12 @@ export default function ProductCards({ products }) {
                     className="flex items-center gap-3 rounded-xl border bg-white p-4 shadow-sm"
                     key={product.id}
                 >
-                    <img
+                    <Image
                         className="h-14 w-14 rounded-lg bg-slate-100 object-cover"
                         src={product.thumbnail}
                         alt=""
+                        width={56}
+                        height={56}
                     />
                     <div className="min-w-0 flex-1">
                         <h2 className="truncate font-semibold text-slate-900">{product.title}</h2>
